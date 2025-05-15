@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saturday Creative Post</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Ensure fonts are correctly linked/loaded if not using @font-face -->
+</head>
+<body>
+    <!-- page-container remains the main boundary -->
+    <div class="page-container">
+
+        <!-- Header -->
+        <header class="site-header">
+            <div class="logo">
+                SATURDAY<br>
+                CREATIVE<br>
+                POST.
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#section-one">Artículos</a></li>
+                    <li><a href="#main-footer">Contacto</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Hero Section Wrapper (Viewport Height) -->
+        <section class="hero-section">
+            <!-- content-grid holds the main visual block and is centered -->
+            <main class="content-grid">
+                <!-- This wrapper defines max-width and centers its own children -->
+                <div class="content-wrapper">
+                    <!-- Background image is INSIDE the wrapper -->
+                    <img src="svg/rejilla.svg" class="background-grid-image" alt="Grid background pattern">
+                    <!-- Container for hover images (same size/pos as grid) -->
+                    <div id="hover-image-container"></div>
+
+                    <!-- Main text is also INSIDE the wrapper -->
+                    <div class="main-text">
+                        <h1>
+                            BLOG DE <span class="trigger-word" data-category="arte">ARTE</span>,
+                            <span class="trigger-word" data-category="diseno">DISEÑO</span>,
+                            <span class="trigger-word" data-category="musica">MÚSICA</span>,
+                            <span class="trigger-word" data-category="moda">MODA</span> Y
+                            <span class="trigger-word" data-category="crisis">CRISIS CREATIVAS</span>.
+                        </h1>
+                        <p class="subtitle">PUBLICAMOS LOS <span class="highlight">SÁBADOS.</span> OBVIO.</p>
+                    </div>
+                </div> <!-- End of content-wrapper -->
+            </main>
+
+            <!-- Bottom info sits absolutely positioned at the bottom -->
+            <div class="bottom-info">
+                Valledupar<br>Co.
+            </div>
+        </section> <!-- End of hero-section -->
+
+
+        <!-- NEW Section 1 - CORRECTED HTML STRUCTURE -->
+        <section id="section-one" class="full-viewport-section">
+            <!-- This container is centered vertically by #section-one -->
+            <div class="section-one-content-block">
+
+                <!-- Constrained Title Block -->
+                <div class="section-one-constrained-width">
+                    <h2 class="section-one-title">COVER ART ES IMPORTANTE</h2>
+                </div>
+
+                <!-- Full Width Image Grid Block -->
+                <div class="image-grid">
+                    <img src="imagenes/section 1/crv (1).jpg" alt="Cover Art 1"><img src="imagenes/section 1/cvr (2).png" alt="Cover Art 2"><img src="imagenes/section 1/cvr (3).png" alt="Cover Art 3"><img src="imagenes/section 1/cvr (4).png" alt="Cover Art 4"><img src="imagenes/section 1/cvr (5).png" alt="Cover Art 5"><img src="imagenes/section 1/cvr (6).png" alt="Cover Art 6"><img src="imagenes/section 1/cvr (7).png" alt="Cover Art 7"><img src="imagenes/section 1/cvr (8).png" alt="Cover Art 8"><img src="imagenes/section 1/cvr (9).png" alt="Cover Art 9"><img src="imagenes/section 1/cvr (10).png" alt="Cover Art 10"><img src="imagenes/section 1/cvr (11).png" alt="Cover Art 11"><img src="imagenes/section 1/cvr (12).png" alt="Cover Art 12"><img src="imagenes/section 1/cvr (13).png" alt="Cover Art 13"><img src="imagenes/section 1/cvr (14).png" alt="Cover Art 14">
+                </div>
+
+                <!-- Constrained Text Content Block -->
+                <div class="section-one-constrained-width">
+                    <div class="text-content">
+                        <p>El arte de portada no es solo un cuadrito bonito: es actitud, identidad visual y muchas veces, el primer filtro entre play o skip.</p>
+                        <p>Hay discos que se vuelven icónicos solo por cómo se ven, y otros que nadie recuerda porque parecían hechos en Paint,</p>
+                        <a href="music.html" class="leer-post-link">LEER POST <span class="arrow">↗</span></a>
+                    </div>
+                </div>
+
+            </div> <!-- End section-one-content-block -->
+        </section>
+        <!-- END Section 1 -->
+
+<!-- NEW Section 2 - UPDATED STRUCTURE -->
+<section id="section-two" class="full-viewport-section">
+    <div class="section-two-content">
+
+        <!-- Top Marquee -->
+        <div class="marquee marquee-top">
+            <div class="marquee-track marquee-track-top">
+                <!-- Repeat the text MANY times to ensure coverage -->
+                <span>DESIGN</span><span>DESIGN</span><span>DESIGN</span><span>DESIGN</span><span>DESIGN</span><span>DESIGN</span><span>DESIGN</span><span>DESIGN</span><span>DESIGN</span><span>DESIGN</span><span>DESIGN</span><span>DESIGN</span><span>DESIGN</span><span>DESIGN</span><span>DESIGN</span><span>DESIGN</span>
+            </div>
+        </div>
+
+        <!-- Image Switcher -->
+        <div class="image-switcher">
+            <!-- Add your images here. The first one needs the 'active' class -->
+            <img src="imagenes/hero/diseño/dsgn (12).webp" alt="Inspiration Image 1" class="switch-image active">
+            <img src="imagenes/hero/diseño/dsgn (10).webp" alt="Inspiration Image 2" class="switch-image">
+            <img src="imagenes/hero/diseño/dsgn (11).webp" alt="Inspiration Image 3" class="switch-image">
+            <img src="imagenes/hero/diseño/dsgn (9).webp" alt="Inspiration Image 4" class="switch-image">
+            <img src="imagenes/hero/diseño/dsgn (8).webp" alt="Inspiration Image 5" class="switch-image">
+            <!-- Add more images as needed -->
+        </div>
+
+       <!-- Bottom Marquee -->
+       <div class="marquee marquee-bottom">
+        <div class="marquee-track marquee-track-bottom">
+            <!-- Repeat the text MANY times -->
+           <span>INSPO</span><span>INSPO</span><span>INSPO</span><span>INSPO</span><span>INSPO</span><span>INSPO</span><span>INSPO</span><span>INSPO</span><span>INSPO</span><span>INSPO</span><span>INSPO</span><span>INSPO</span><span>INSPO</span><span>INSPO</span><span>INSPO</span><span>INSPO</span>
+       </div>
+   </div>
+
+   <!-- **** ADD THIS LINK **** -->
+   <a href="design.html" class="leer-post-link-2">LEER POST <span class="arrow">↗</span></a>
+   <!-- *********************** -->
+
+</div> <!-- End section-two-content -->
+</section>
+<!-- END Section 2 -->
+
+
+        <!-- NEW Actual Footer (Viewport Height) -->
+        <footer class="main-footer">
+            <div class="footer-content-wrapper">
+
+                <!-- Column 1: Newsletter -->
+                <div class="footer-column">
+                    <h4>Suscríbete</h4>
+                    <p>Recibe las últimas crisis creativas directo en tu bandeja.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="tu@email.com" required aria-label="Email for newsletter">
+                        <button type="submit">Enviar</button>
+                    </form>
+                </div>
+
+                <!-- Column 2: Navigation / Links -->
+                <div class="footer-column">
+                    <h4>Explorar</h4>
+                    <nav class="footer-nav">
+                        <ul>
+                            <li><a href="#">Inicio</a></li>
+                            <li><a href="#">Artículos Recientes</a></li>
+                            <li><a href="#">Archivo</a></li>
+                            <li><a href="#">Sobre Nosotros</a></li>
+                            <li><a href="#">Política de Privacidad</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <!-- Column 3: Social & Collaborators -->
+                <div class="footer-column">
+                    <h4>Conecta</h4>
+                    <div class="social-icons">
+                        <!-- Replace # with actual links. Add SVGs/Icons for better visuals -->
+                        <a href="#" aria-label="Instagram">IG</a>
+                        <a href="#" aria-label="Twitter">TW</a>
+                        <a href="#" aria-label="Behance">BE</a>
+                        <a href="#" aria-label="LinkedIn">LI</a>
+                    </div>
+                    <div class="collaborators-link">
+                        <h4>Colaboradores</h4>
+                        <!-- Replace # with the actual external link -->
+                        <a href="https://example.com/team" target="_blank" rel="noopener noreferrer">Conoce al equipo</a>
+                    </div>
+                </div>
+
+                <!-- Column 4: Info -->
+                <div class="footer-column footer-info">
+                     <div class="footer-logo">
+                        SATURDAY<br>
+                        CREATIVE<br>
+                        POST.
+                     </div>
+                     <p>© <span id="current-year"></span> SCP Creative. Todos los derechos reservados.</p>
+                     <p>Valledupar, Colombia</p>
+                </div>
+
+            </div> <!-- End footer-content-wrapper -->
+        </footer> <!-- End of main-footer -->
+
+    </div> <!-- End of page-container -->
+
+    <!-- Scripts -->
+    <!-- GSAP Core & ScrollTrigger Plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <!-- Your Custom Scripts -->
+    <script src="js/script.js" defer></script> <!-- For hover image logic -->
+    <script src="js/index-effects.js" defer></script> <!-- For hover image logic -->
+    <script src="js/scroll-effects.js" defer></script> <!-- For GSAP/Lenis/Parallax effects -->
+
+    <!-- Script to update copyright year -->
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>

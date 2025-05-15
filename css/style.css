@@ -1,0 +1,717 @@
+/* --------------------- */
+/* --- Font Imports ---- */
+/* --------------------- */
+@font-face {
+    font-family: 'FreightTextPro';
+    src: url('../fonts/FreightTextProBook-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'FreightTextPro';
+    src: url('../fonts/FreightTextProLight-Regular.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Pragati Narrow';
+    src: url('../fonts/PragatiNarrow-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+/* --------------------- */
+/* --- Basic Reset ----- */
+/* --------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --------------------- */
+/* --- Body & Layout --- */
+/* --------------------- */
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'FreightTextPro', serif;
+    font-weight: 400;
+    background-color: #F7F5F0;
+    color: #333;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+}
+
+.page-container {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* --------------------- */
+/* --- Header ---------- */
+/* --------------------- */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 12px 12px;
+    background-color: transparent;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.logo {
+    font-family: 'Pragati Narrow', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 0.8;
+    color: #e71a0f;
+    text-transform: uppercase;
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.main-nav li {
+    margin-left: 35px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #1F1F1F;
+    font-family: 'FreightTextPro', serif;
+    font-weight: 400;
+    font-size: 18px;
+    display: inline-block;
+    position: relative;
+}
+
+.main-nav a:hover,
+.main-nav a:focus {
+    color: #e71a0f;
+    text-decoration: underline;
+    transform: translateY(-2px);
+    outline: none;
+}
+
+/* --------------------- */
+/* --- Hero Section ---- */
+/* --------------------- */
+.hero-section {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.content-grid { /* Hero positioning grid */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content-wrapper { /* Hero content constraint */
+    width: 85%;        /* <<< HERO WIDTH */
+    max-width: 1200px; /* <<< HERO MAX-WIDTH */
+    position: relative;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.background-grid-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+    z-index: -1;
+    pointer-events: none;
+}
+
+#hover-image-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    height: 150%;
+    max-width: 100%;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 0;
+    pointer-events: none;
+}
+
+#hover-image-container.is-visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.main-text { /* Hero text block */
+    max-width: 85%; /* Relative to parent .content-wrapper */
+    text-align: justify;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+}
+
+.main-text h1 {
+    font-family: 'FreightTextPro', serif;
+    font-weight: 400;
+    font-size: 80px;
+    line-height: 1;
+    color: #1F1F1F;
+    margin-bottom: 1px;
+    position: relative;
+}
+
+.main-text .trigger-word {
+    cursor: pointer;
+    position: relative;
+    color: inherit;
+}
+
+.main-text h1.h1-hover-active {
+    color: rgba(31, 31, 31, 0.25);
+}
+
+.main-text h1.h1-hover-active .trigger-word.is-active {
+    color: #e71a0f;
+}
+
+.main-text .subtitle {
+    font-family: 'Pragati Narrow', sans-serif;
+    font-weight: 800;
+    font-size: 80px;
+    line-height: 1;
+    color: #1F1F1F;
+    text-transform: uppercase;
+    text-align: justify;
+}
+
+.main-text h1.h1-hover-active + .subtitle {
+    color: rgba(31, 31, 31, 0.25);
+}
+
+.main-text h1.h1-hover-active + p.subtitle .highlight::before {
+    opacity: 0.25;
+}
+
+.main-text .highlight {
+    position: relative;
+    display: inline-block;
+    font-family: inherit;
+    font-weight: inherit;
+}
+
+.main-text .highlight::before {
+    content: url('../svg/Mark.svg');
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -43%);
+    z-index: -1;
+    width: 115%;
+    height: 140%;
+    display: block;
+    opacity: 1;
+}
+
+/* -------------------------------- */
+/* --- Bottom Info (Old Footer) --- */
+/* -------------------------------- */
+.bottom-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50;
+    padding: 12px 12px;
+    background-color: transparent;
+    font-family: 'FreightTextPro', serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1;
+    color: #1F1F1F;
+    box-sizing: border-box;
+}
+
+/* --------------------- */
+/* --- Base Sections --- */
+/* --------------------- */
+.full-viewport-section {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    padding: 60px 0; /* Vertical padding */
+}
+
+/* --------------------- */
+/* --- Section One ----- */
+/* --- FINAL CORRECTION --- */
+/* --------------------- */
+#section-one {
+    background-color: #F7F5F0;
+    /* Inherits flex centering and padding */
+}
+
+.section-one-content-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Horizontally center children */
+    width: 100%;         /* Allow block to use necessary width */
+    box-sizing: border-box;
+}
+
+/* CONSTRAINED block for Title and Text */
+.section-one-constrained-width {
+    width: 85%;        /* <<< MATCHING HERO WIDTH */
+    max-width: 1200px; /* <<< MATCHING HERO MAX-WIDTH */
+    margin-left: auto;
+    margin-right: auto; /* Center this block */
+    padding: 0;        /* NO padding on the wrapper itself */
+    box-sizing: border-box;
+}
+
+/* Title styling */
+.section-one-title {
+    /* (lives inside .section-one-constrained-width) */
+    font-family: 'Pragati Narrow', sans-serif;
+    font-weight: 700;
+    font-size: 4.5rem;
+    text-transform: uppercase;
+    color: #1F1F1F;
+    line-height: 1.1;
+    text-align: left;
+    width: 100%;
+    padding: 0 0;     /* Padding INSIDE the constrained width */
+    box-sizing: border-box;
+    margin-bottom: 30px; /* Regular space */
+}
+
+/* Image Grid - ALSO CONSTRAINED */
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 15px;           /* <<< REDUCED GAP */
+    width: 85%;        /* <<< MATCHING HERO WIDTH */
+    max-width: 1200px; /* <<< MATCHING HERO MAX-WIDTH */
+    margin-left: auto;   /* Center the grid itself */
+    margin-right: auto;
+    padding: 0 12px;     /* Padding INSIDE the constrained width */
+    box-sizing: border-box;
+    margin-bottom: 30px; /* Regular space */
+}
+
+/* Images - fill their grid cell within the CONSTRAINED grid */
+.image-grid img {
+    width: 100%;         /* Fill the 1fr cell of the CONSTRAINED grid */
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+    max-width: 100%;
+    /* Optional border removed */
+    /* border: 1px solid #ddd; */
+}
+
+/* Text Content styling */
+.text-content {
+    /* (lives inside .section-one-constrained-width) */
+    width: 50%;
+    text-align: left;
+    padding: 0 12px;     /* Padding INSIDE the constrained width */
+    box-sizing: border-box;
+}
+
+.text-content p {
+    font-family: 'FreightTextPro', serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 1em;
+}
+
+.leer-post-link {
+    display: block;
+    text-align: right;
+    font-family: 'Pragati Narrow', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #1F1F1F;
+    font-size: 30px;
+    margin-top: 20px;
+    width: 30%;
+    transform: translateX(1000px) translateY(-165px);
+    transition: color 0.3s ease;
+}
+
+.leer-post-link .arrow {
+    display: inline-block;
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+
+.leer-post-link:hover {
+    color: #e71a0f;
+}
+
+.leer-post-link:hover .arrow {
+    transform: translateX(3px) translateY(-3px);
+}
+
+
+/* --------------------- */
+/* --- Section Two ----- */
+/* --------------------- */
+#section-two {
+    background-color: #c0c0c0;
+    /* Inherits styles from .full-viewport-section */
+}
+
+.leer-post-link-2 {
+  display: block;
+  text-align: center;
+  font-family: 'Pragati Narrow', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #1F1F1F;
+  font-size: 30px;
+  width: 30%;
+  transition: color 0.3s ease;
+  transform: translateY(-20px);
+}
+
+.leer-post-link-2 .arrow {
+  display: inline-block;
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+}
+
+
+.leer-post-link-2:hover {
+  color: #e71a0f;
+}
+
+.leer-post-link-2:hover .arrow {
+  transform: translateX(3px) translateY(-3px);
+}
+
+
+
+/* --------------------- */
+/* --- Main Footer ----- */
+/* --------------------- */
+.main-footer {
+  width: 100%;
+  min-height: 100vh;
+  padding: 60px 40px 40px 40px;
+  background-color: #1F1F1F;
+  color: #F7F5F0;
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-content-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 200px;
+  margin-bottom: 30px;
+}
+
+.footer-column h4 {
+  font-family: 'Pragati Narrow', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  color: #F7F5F0;
+}
+
+.footer-column p {
+  font-family: 'FreightTextPro', serif;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  color: #d3d1cc;
+}
+
+/* Newsletter Form */
+.newsletter-form {
+  display: flex;
+  gap: 5px;
+}
+
+.newsletter-form input[type="email"] {
+  flex-grow: 1;
+  padding: 10px 12px;
+  border: 1px solid #555;
+  background-color: #333;
+  color: #F7F5F0;
+  font-family: 'FreightTextPro', serif;
+  font-size: 14px;
+  border-radius: 3px;
+}
+.newsletter-form input[type="email"]::placeholder {
+   color: #888;
+}
+
+.newsletter-form button {
+  padding: 10px 15px;
+  background-color: #e71a0f;
+  color: #F7F5F0;
+  border: none;
+  cursor: pointer;
+  font-family: 'Pragati Narrow', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+}
+
+.newsletter-form button:hover {
+  background-color: #c4160c;
+}
+
+/* Footer Navigation */
+.footer-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-nav li {
+  margin-bottom: 8px;
+}
+
+.footer-nav a {
+  text-decoration: none;
+  color: #d3d1cc;
+  font-family: 'FreightTextPro', serif;
+  font-weight: 300;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.footer-nav a:hover,
+.footer-nav a:focus {
+  color: #e71a0f;
+}
+
+/* Social Icons */
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.social-icons a {
+  text-decoration: none;
+  color: #F7F5F0;
+  font-family: 'Pragati Narrow', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover,
+.social-icons a:focus {
+  color: #e71a0f;
+  transform: scale(1.1);
+}
+
+/* Collaborators Link */
+.collaborators-link a {
+  text-decoration: none;
+  color: #d3d1cc;
+  font-family: 'FreightTextPro', serif;
+  font-weight: 300;
+  font-size: 14px;
+  transition: color 0.3s ease;
+  display: inline-block;
+  border-bottom: 1px solid transparent;
+}
+
+.collaborators-link a:hover,
+.collaborators-link a:focus {
+  color: #e71a0f;
+  border-bottom-color: #e71a0f;
+}
+
+/* Footer Info Column */
+.footer-info {
+ /* Optional styling */
+}
+
+.footer-logo {
+  font-family: 'Pragati Narrow', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 0.9;
+  color: #e71a0f;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.footer-info p {
+  font-size: 12px;
+  margin-bottom: 5px;
+  color: #aaa;
+}
+
+/* --------------------- */
+/* --- Section Two ----- */
+/* --------------------- */
+#section-two {
+  background-color: #e7e5e0; /* Light grey background */
+  /* Inherits base styles from .full-viewport-section */
+  overflow: hidden; /* Crucial to hide overflowing marquee text */
+  position: relative; /* Needed for potential absolute positioning inside */
+  padding: 0; /* Remove default padding if full bleed is desired */
+  box-sizing: border-box;
+}
+
+.section-two-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  width: 100%;
+  height: 100%; /* Take full height of parent */
+  gap: 30px; /* Space between marquee/image/marquee */
+  padding: 40px 0; /* Vertical padding */
+  box-sizing: border-box;
+}
+
+/* Marquee Styling */
+.marquee {
+  width: 100%;
+  overflow: hidden; /* Hide overflow */
+  white-space: nowrap; /* Prevent text wrapping */
+  display: flex; /* Use flex for the track */
+  user-select: none; /* Prevent text selection */
+}
+
+.marquee-track {
+  display: flex;
+  will-change: transform; /* Performance hint for animation */
+  flex-shrink: 0; /* Prevent track from shrinking */
+}
+
+.marquee span {
+  font-family: 'Pragati Narrow', sans-serif;
+  font-weight: 700;
+  font-size: 6rem; /* Adjust size as needed */
+  text-transform: uppercase;
+  color: rgba(31, 31, 31, 0.8); /* Slightly transparent black */
+  padding: 0 20px; /* Space between words */
+  flex-shrink: 0; /* Prevent individual words from shrinking */
+  display: inline-block; /* Ensure proper spacing/layout */
+  line-height: 1;
+}
+
+.marquee-track-bottom span {
+  /* Styles for the INSPO text spans */
+  transform: translateX(-2000px);
+}
+
+
+
+/* Image Switcher Styling */
+.image-switcher {
+  width: 60%; /* Adjust width as needed */
+  max-width: 700px; /* Max width */
+  aspect-ratio: 16 / 9; /* Or your desired aspect ratio */
+  position: relative; /* For absolute positioning of images */
+  overflow: hidden; /* Hide parts of images if they overflow */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Optional shadow */
+}
+
+.switch-image {
+  display: none; /* Hide all images by default */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cover the container */
+  user-select: none;
+}
+
+.switch-image.active {
+  display: block; /* Show only the active image */
+}
+
+.trail-image {
+  position: absolute;
+  pointer-events: none;
+  z-index: 10;
+  width: 60px;   /* Adjust size as desired */
+  height: 60px;  /* Adjust size as desired */
+  object-fit: cover;
+  /* border-radius: 50%;  <-- REMOVED THIS LINE */
+}
+
+/* --- End of File --- */
