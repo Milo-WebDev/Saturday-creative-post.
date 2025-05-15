@@ -171,7 +171,7 @@
   position: relative; /* Original value */
   margin: 0; /* Original value */
   /* The inline styles like --r, --c, --s define grid placement and span */
-  
+  --s: 1;
 }
 
 .grid__item-img {
