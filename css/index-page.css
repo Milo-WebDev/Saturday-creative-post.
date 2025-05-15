@@ -1,0 +1,386 @@
+/* --- START OF FILE css/index-page.css --- */
+
+/* Inherits from global.css */
+
+/* --------------------- */
+/* --- Hero Section ---- */
+/* --------------------- */
+.hero-section {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.content-grid { /* Hero positioning grid */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content-wrapper { /* Hero content constraint */
+    width: 85%;        /* <<< HERO WIDTH */
+    max-width: 1200px; /* <<< HERO MAX-WIDTH */
+    position: relative;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.background-grid-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+    z-index: -1;
+    pointer-events: none;
+}
+
+#hover-image-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    height: 150%;
+    max-width: 100%;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 0;
+    pointer-events: none;
+}
+
+#hover-image-container.is-visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.main-text { /* Hero text block */
+    max-width: 85%; /* Relative to parent .content-wrapper */
+    text-align: justify;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+}
+
+.main-text h1 {
+    font-family: 'FreightTextPro', serif;
+    font-weight: 400;
+    font-size: 80px;
+    line-height: 1;
+    color: #1F1F1F; /* Overrides --color-heading if different, but it's the same */
+    margin-bottom: 1px;
+    position: relative;
+}
+
+.main-text .trigger-word {
+    cursor: pointer;
+    position: relative;
+    color: inherit;
+}
+
+.main-text h1.h1-hover-active {
+    color: rgba(31, 31, 31, 0.25);
+}
+
+.main-text h1.h1-hover-active .trigger-word.is-active {
+    color: var(--color-primary); /* Use variable */
+}
+
+.main-text .subtitle {
+    font-family: 'Pragati Narrow', sans-serif;
+    font-weight: 800; /* Note: global.css has 700 for Pragati, this is specific */
+    font-size: 80px;
+    line-height: 1;
+    color: #1F1F1F;
+    text-transform: uppercase;
+    text-align: justify;
+}
+
+.main-text h1.h1-hover-active + .subtitle {
+    color: rgba(31, 31, 31, 0.25);
+}
+
+.main-text h1.h1-hover-active + p.subtitle .highlight::before {
+    opacity: 0.25;
+}
+
+.main-text .highlight {
+    position: relative;
+    display: inline-block;
+    font-family: inherit;
+    font-weight: inherit;
+}
+
+.main-text .highlight::before {
+    content: url('../svg/Mark.svg'); /* Ensure path is correct */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -43%);
+    z-index: -1;
+    width: 115%;
+    height: 140%;
+    display: block;
+    opacity: 1;
+}
+
+/* -------------------------------- */
+/* --- Bottom Info (Old Footer) --- */
+/* -------------------------------- */
+.bottom-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50;
+    padding: 12px 12px;
+    background-color: transparent;
+    font-family: 'FreightTextPro', serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1;
+    color: #1F1F1F;
+    box-sizing: border-box;
+}
+
+/* --------------------- */
+/* --- Base Sections --- */
+/* --------------------- */
+.full-viewport-section {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    padding: 60px 0; /* Vertical padding */
+}
+
+/* --------------------- */
+/* --- Section One ----- */
+/* --------------------- */
+#section-one {
+    background-color: var(--color-bg-main); /* Use variable */
+}
+
+.section-one-content-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.section-one-constrained-width {
+    width: 85%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.section-one-title {
+    font-family: 'Pragati Narrow', sans-serif;
+    font-weight: 700;
+    font-size: 4.5rem;
+    text-transform: uppercase;
+    color: #1F1F1F;
+    line-height: 1.1;
+    text-align: left;
+    width: 100%;
+    padding: 0;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+}
+
+.image-grid { /* Specific to index.html's section-one */
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 15px;
+    width: 85%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 12px;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+}
+
+.image-grid img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+    max-width: 100%;
+}
+
+.text-content { /* Specific to index.html's section-one */
+    width: 50%;
+    text-align: left;
+    padding: 0 12px;
+    box-sizing: border-box;
+}
+
+.text-content p {
+    font-family: 'FreightTextPro', serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--color-text-main); /* Use variable */
+    margin-bottom: 1em;
+}
+
+.leer-post-link {
+    display: block;
+    text-align: right;
+    font-family: 'Pragati Narrow', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #1F1F1F;
+    font-size: 30px;
+    margin-top: 20px;
+    width: 30%;
+    transform: translateX(1000px) translateY(-165px);
+    transition: color 0.3s ease;
+}
+
+.leer-post-link .arrow {
+    display: inline-block;
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.leer-post-link:hover {
+    color: var(--color-primary); /* Use variable */
+}
+
+.leer-post-link:hover .arrow {
+    transform: translateX(3px) translateY(-3px);
+}
+
+/* --------------------- */
+/* --- Section Two ----- */
+/* --------------------- */
+#section-two {
+    background-color:  #e7e5e0; /* Specific color */
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.section-two-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    gap: 30px;
+    padding: 40px 0;
+    box-sizing: border-box;
+}
+
+.marquee {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    display: flex;
+    user-select: none;
+}
+
+.marquee-track {
+    display: flex;
+    will-change: transform;
+    flex-shrink: 0;
+}
+
+.marquee span {
+    font-family: 'Pragati Narrow', sans-serif;
+    font-weight: 700;
+    font-size: 6rem;
+    text-transform: uppercase;
+    color: rgba(31, 31, 31, 0.8);
+    padding: 0 20px;
+    flex-shrink: 0;
+    display: inline-block;
+    line-height: 1;
+}
+
+.marquee-track-bottom span {
+    transform: translateX(-2000px);
+}
+
+.image-switcher {
+    width: 60%;
+    max-width: 700px;
+    aspect-ratio: 16 / 9;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.switch-image {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    user-select: none;
+}
+
+.switch-image.active {
+    display: block;
+}
+
+.leer-post-link-2 {
+    display: block;
+    text-align: center;
+    font-family: 'Pragati Narrow', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #1F1F1F;
+    font-size: 30px;
+    width: 30%;
+    transition: color 0.3s ease;
+    transform: translateY(-20px);
+}
+
+.leer-post-link-2 .arrow {
+    display: inline-block;
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+.leer-post-link-2:hover {
+    color: var(--color-primary); /* Use variable */
+}
+
+.leer-post-link-2:hover .arrow {
+    transform: translateX(3px) translateY(-3px);
+}
+
+/* --- End of File --- */

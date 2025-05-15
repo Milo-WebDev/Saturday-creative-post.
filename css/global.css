@@ -1,0 +1,343 @@
+/* --- START OF FILE css/global.css --- */
+
+/* --------------------- */
+/* --- Font Imports ---- */
+/* --------------------- */
+@font-face {
+    font-family: 'FreightTextPro';
+    src: url('../fonts/FreightTextProBook-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'FreightTextPro';
+    src: url('../fonts/FreightTextProLight-Regular.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Pragati Narrow';
+    src: url('../fonts/PragatiNarrow-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* --------------------- */
+/* --- Basic Reset ----- */
+/* --------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --------------------- */
+/* --- CSS Variables --- */
+/* --------------------- */
+:root {
+    --color-bg-main: #F7F5F0;
+    --color-text-main: #333;
+    --color-primary: #e71a0f;
+    --color-heading: #1F1F1F;
+    --color-footer-bg: #1F1F1F;
+    --color-footer-text: #F7F5F0;
+    --color-footer-text-light: #d3d1cc;
+    --color-footer-text-muted: #aaa;
+    --color-title: var(--color-heading); /* General use title color */
+    --color-year: #555; /* General use for year displays */
+    --parallax-offset-y: 0px; /* Used by global scroll effects */
+}
+
+/* --------------------- */
+/* --- Body & Layout --- */
+/* --------------------- */
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scrollbars globally */
+}
+
+body {
+    font-family: 'FreightTextPro', serif;
+    font-weight: 400;
+    background-color: var(--color-bg-main);
+    color: var(--color-text-main);
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    width: 100%;
+}
+
+.page-container {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    /* overflow-x: hidden; is on html tag, if specific pages need y hidden, they add it */
+}
+
+
+/* --------------------- */
+/* --- Header ---------- */
+/* --------------------- */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 12px 12px;
+    background-color: transparent; /* Default, can be changed by scroll */
+    flex-shrink: 0;
+    box-sizing: border-box;
+    /* transition: background-color 0.3s ease; /* If you add scrolled background */
+}
+
+/* Example for scrolled header background (add via JS) */
+/*
+.site-header.scrolled {
+  background-color: rgba(247, 245, 240, 0.9);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+*/
+
+.logo {
+    font-family: 'Pragati Narrow', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 0.8;
+    color: var(--color-primary);
+    text-transform: uppercase;
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.main-nav li {
+    margin-left: 35px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--color-heading);
+    font-family: 'FreightTextPro', serif;
+    font-weight: 400;
+    font-size: 18px;
+    display: inline-block;
+    position: relative;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.main-nav a:hover,
+.main-nav a:focus {
+    color: var(--color-primary);
+    text-decoration: underline;
+    transform: translateY(-2px);
+    outline: none;
+}
+
+/* --------------------- */
+/* --- Main Footer ----- */
+/* (Faithful to original m-style.css / style.css footer block) */
+/* --------------------- */
+.main-footer {
+  width: 100%;
+  min-height: 100vh;
+  padding: 60px 40px 40px 40px;
+  background-color: var(--color-footer-bg);
+  color: var(--color-footer-text);
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-end; /* Align wrapper to bottom */
+  justify-content: center;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  /* margin-top: auto; /* Optional: if page-container is direct flex parent and footer should fill space */
+}
+
+.footer-content-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 200px;
+  margin-bottom: 30px;
+}
+
+.footer-column h4 {
+  font-family: 'Pragati Narrow', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  color: var(--color-footer-text);
+}
+
+.footer-column p {
+  font-family: 'FreightTextPro', serif;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  color: var(--color-footer-text-light);
+}
+
+/* Newsletter Form */
+.newsletter-form { display: flex; gap: 5px; }
+.newsletter-form input[type="email"] {
+  flex-grow: 1; padding: 10px 12px; border: 1px solid #555;
+  background-color: #333; color: var(--color-footer-text);
+  font-family: 'FreightTextPro', serif; font-size: 14px; border-radius: 3px;
+}
+.newsletter-form input[type="email"]::placeholder { color: #888; }
+.newsletter-form button {
+  padding: 10px 15px; background-color: var(--color-primary);
+  color: var(--color-footer-text); border: none; cursor: pointer;
+  font-family: 'Pragati Narrow', sans-serif; font-weight: 700;
+  font-size: 14px; text-transform: uppercase; border-radius: 3px;
+  transition: background-color 0.3s ease;
+}
+.newsletter-form button:hover { background-color: #c4160c; }
+
+/* Footer Navigation */
+.footer-nav ul { list-style: none; padding: 0; margin: 0; }
+.footer-nav li { margin-bottom: 10px; } /* Adjusted to 10px for a bit more space if desired */
+.footer-nav a {
+  text-decoration: none;
+  color: var(--color-footer-text-light);
+  font-family: 'FreightTextPro', serif;
+  font-weight: 300;
+  font-size: 14px;
+  display: inline-block; /* Ensures transform applies correctly and respects flow */
+  position: relative; /* Good practice for transforms, though not strictly needed for simple translate */
+
+  /* ADD 'transform' to the transition property list */
+  /* You can adjust the duration (0.2s is a bit quicker, 0.3s is common) */
+  transition: color 0.2s ease,
+              transform 0.2s ease-out; /* Added transform transition with ease-out */
+}
+
+.footer-nav a:hover,
+.footer-nav a:focus {
+  color: var(--color-primary);
+
+
+  /* ADD THE TRANSLATE EFFECT ON HOVER/FOCUS */
+  transform: translateX(2px); /* Moves the link up by 2 pixels */
+}
+
+/* Social Icons */
+.social-icons { display: flex; gap: 15px; margin-bottom: 25px; }
+.social-icons a {
+  text-decoration: none; color: var(--color-footer-text);
+  font-family: 'Pragati Narrow', sans-serif; font-weight: 700; font-size: 16px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.social-icons a:hover, .social-icons a:focus {
+  color: var(--color-primary); transform: scale(1.1);
+}
+
+/* Collaborators Link */
+/* The HTML structure you provided had .collaborators-link with an H4 and then an A */
+.collaborators-link h4 {
+  font-family: 'Pragati Narrow', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  text-transform: uppercase;
+  margin-bottom: 15px; /* Consistent with .footer-column h4 */
+  color: var(--color-footer-text);
+}
+.collaborators-link a {
+  text-decoration: none; color: var(--color-footer-text-light);
+  font-family: 'FreightTextPro', serif; font-weight: 300; font-size: 14px;
+  transition: color 0.3s ease; display: inline-block;
+  border-bottom: 1px solid transparent;
+}
+.collaborators-link a:hover, .collaborators-link a:focus {
+  color: var(--color-primary); border-bottom-color: var(--color-primary);
+}
+
+.footer-logo {
+  font-family: 'Pragati Narrow', sans-serif; font-weight: 700; font-size: 18px;
+  line-height: 0.9; color: var(--color-primary); text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.footer-info p {
+  font-size: 12px; margin-bottom: 5px;
+  color: var(--color-footer-text-muted);
+}
+
+/* Common .trail-image style (if it wasn't already moved from footer section) */
+.trail-image {
+  position: absolute;
+  pointer-events: none;
+  z-index: 10;
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}
+/* --- End of File --- */
+
+/* Footer Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .main-footer {
+        padding: 60px 20px 30px 20px;
+        min-height: auto;
+        align-items: flex-start;
+    }
+    .footer-content-wrapper {
+        gap: 30px;
+    }
+    .footer-column {
+        flex-basis: calc(50% - 15px);
+        min-width: 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .footer-column {
+        flex-basis: 100%;
+    }
+    .newsletter-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .newsletter-form button {
+        width: 100%;
+    }
+}
+
+/* Common .trail-image style */
+.trail-image {
+  position: absolute;
+  pointer-events: none;
+  z-index: 10;
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}
+/* --- End of File --- */

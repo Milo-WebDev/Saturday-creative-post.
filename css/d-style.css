@@ -1,526 +1,187 @@
-/* --- START OF FILE d-style.css (Complete & Refined - No Read More) --- */
+/* --- START OF FILE css/design-page.css --- */
 
-/* --- START OF FILE m-style.css --- */ /* (Original comment kept for context) */
-
-/* --------------------- */
-/* --- Font Imports ---- */
-/* --------------------- */
-@font-face {
-  font-family: 'FreightTextPro';
-  src: url('../fonts/FreightTextProBook-Regular.ttf') format('truetype'); /* Adjust path */
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'FreightTextPro';
-  src: url('../fonts/FreightTextProLight-Regular.ttf') format('truetype'); /* Adjusted path */
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Pragati Narrow';
-  src: url('../fonts/PragatiNarrow-Bold.ttf') format('truetype'); /* Adjusted path */
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* --------------------- */
-/* --- Basic Reset ----- */
-/* --------------------- */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* --------------------- */
-/* --- CSS Variables --- */
-/* --------------------- */
-:root {
-  --color-bg-main: #F7F5F0;
-  --color-text-main: #333;
-  --color-primary: #e71a0f;
-  --color-heading: #1F1F1F;
-  --color-footer-bg: #1F1F1F;
-  --color-footer-text: #F7F5F0;
-  --color-footer-text-light: #d3d1cc;
-  --color-footer-text-muted: #aaa;
-  --color-title: var(--color-heading); /* Used in Item Text */
-  --color-year: #555; /* Keep if used elsewhere, maybe footer */
-}
-
-/* --------------------- */
-/* --- Body & Layout --- */
-/* --------------------- */
-html {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden; /* Prevent horizontal scrollbars globally */
-}
-
-body {
-  font-family: 'FreightTextPro', serif;
-  font-weight: 400;
-  background-color: var(--color-bg-main);
-  color: var(--color-text-main);
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  padding: 0;
-  margin: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  width: 100%;
-}
-
-.page-container {
-  width: 100%;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  overflow: hidden; /* Simplified overflow handling */
-  --parallax-offset-y: 0px; /* Define variable for JS parallax if still used */
-}
+/* Inherits from global.css */
 
 
-/* --------------------- */
-/* --- Header ---------- */
-/* --------------------- */
-.site-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 100;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 12px 12px;
-  flex-shrink: 0;
-  /* Add background toggle class via JS if needed */
-  /* transition: background-color 0.3s ease; */
-}
-
-/* Example for scrolled header background (add via JS) */
-/*
-.site-header.scrolled {
-  background-color: rgba(247, 245, 240, 0.9);
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-*/
-
-.logo {
-  font-family: 'Pragati Narrow', sans-serif;
-  font-weight: 700;
-  font-size: 22px;
-  line-height: 0.8;
-  color: var(--color-primary);
-  text-transform: uppercase;
-}
-
-.main-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-}
-
-.main-nav li {
-  margin-left: 35px;
-}
-
-.main-nav a {
-  text-decoration: none;
-  color: var(--color-heading);
-  font-family: 'FreightTextPro', serif;
-  font-weight: 400;
-  font-size: 18px;
-  display: inline-block;
-  position: relative;
-  transition: color 0.3s ease, transform 0.3s ease; /* Added transitions */
-}
-
-.main-nav a:hover,
-.main-nav a:focus {
-  color: var(--color-primary);
-  text-decoration: underline; /* Keep underline or use another effect */
-  transform: translateY(-2px);
-  outline: none;
-}
 
 /* --------------------- */
 /* --- Intro Section --- */
 /* --------------------- */
-.intro-section {
-  width: 100%;
-  min-height: 50vh; /* Adjust as needed */
-  padding: 120px 40px 80px 40px; /* Increased top padding */
-  display: flex;
-  align-items: flex-end;
-  box-sizing: border-box;
-  margin-bottom: 5vh; /* Add space below intro */
+.intro-section { /* Styles for design.html intro */
+    width: 100%;
+    min-height: 50vh;
+    padding: 120px 40px 80px 40px;
+    display: flex;
+    align-items: flex-end;
+    box-sizing: border-box;
+    margin-bottom: 5vh;
 }
 
 .intro-content {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 40px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
 }
 
 .intro-title {
-  font-family: 'Pragati Narrow', sans-serif;
-  font-weight: 700;
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  line-height: 1.1;
-  color: var(--color-heading);
-  text-transform: uppercase;
-  margin: 0;
-  flex-basis: 60%;
-  text-align: left;
+    font-family: 'Pragati Narrow', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 1.1;
+    color: var(--color-heading);
+    text-transform: uppercase;
+    margin: 0;
+    flex-basis: 60%;
+    text-align: left;
 }
 
 .intro-title .highlight {
-  position: relative;
-  display: inline-block; /* Needed for the ::before to position correctly */
+    position: relative;
+    display: inline-block;
 }
 
 .intro-title .highlight::before {
-  content: url('../svg/Mark.svg'); /* !! Check path relative to CSS !! */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -30%); /* Adjust Y value if needed */
-  z-index: -1;
-  width: 115%; /* Adjust size as needed */
-  height: 140%; /* Adjust size as needed */
-  display: block;
-  opacity: 1;
-  pointer-events: none;
+    content: url('../svg/Mark.svg'); /* Ensure path is correct */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    z-index: -1;
+    width: 115%;
+    height: 140%;
+    display: block;
+    opacity: 1;
+    pointer-events: none;
 }
 
 .intro-details {
-  flex-basis: 35%;
-  text-align: right;
-  padding-bottom: 0.5rem; /* Align baseline better with title */
+    flex-basis: 35%;
+    text-align: right;
+    padding-bottom: 0.5rem;
 }
 
 .intro-details p {
-  font-family: 'FreightTextPro', serif;
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.6;
-  color: var(--color-text-main);
-  margin: 0 0 0.5rem 0;
+    font-family: 'FreightTextPro', serif;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-text-main);
+    margin: 0 0 0.5rem 0;
 }
 
 .intro-details p.post-date {
-  font-size: 0.85rem;
-  color: #666; /* Slightly darker than muted */
-  font-weight: 300;
-  margin-bottom: 0;
+    font-size: 0.85rem;
+    color: #666;
+    font-weight: 300;
+    margin-bottom: 0;
 }
 
-/* Responsive adjustments for Intro Section */
 @media screen and (max-width: 768px) {
-  .intro-section {
-    padding: 100px 20px 60px 20px; /* Adjust padding */
-    min-height: auto; /* Let content define height */
-    align-items: center; /* Center content vertically */
-    margin-bottom: 8vh;
-  }
-  .intro-content {
-    flex-direction: column;
-    align-items: flex-start; /* Align text left */
-    gap: 25px;
-  }
-  .intro-title { flex-basis: auto; text-align: left; }
-  .intro-details { flex-basis: auto; text-align: left; width: 100%; padding-bottom: 0; }
+    .intro-section {
+        padding: 100px 20px 60px 20px;
+        min-height: auto;
+        align-items: center;
+        margin-bottom: 8vh;
+    }
+    .intro-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 25px;
+    }
+    .intro-title {
+        flex-basis: auto;
+        text-align: left;
+    }
+    .intro-details {
+        flex-basis: auto;
+        text-align: left;
+        width: 100%;
+        padding-bottom: 0;
+    }
 }
-
 
 /* ----------------------------- */
 /* --- Image & Text Sections --- */
 /* ----------------------------- */
-.content-section {
-  width: 100%;
-  max-width: 1200px; /* Or your preferred max width */
-  margin: 0 auto; /* Center the section */
-  padding: 5vh 40px 15vh 40px; /* Adjusted padding */
-  box-sizing: border-box;
+.content-section { /* Specific to design.html */
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5vh 40px 15vh 40px;
+    box-sizing: border-box;
 }
 
 .image-text-item {
-  display: flex;
-  gap: 50px; /* Increased space between image and text */
-  align-items: center; /* Vertically center items */
-  margin-bottom: 12vh; /* Increased space between each item */
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    margin-bottom: 12vh;
 }
 
-/* Alternating layout: Image on the right for even items */
 .image-text-item:nth-child(even) {
-  flex-direction: row-reverse;
+    flex-direction: row-reverse;
 }
 
 .item-image {
-  flex: 0 0 45%; /* Image takes up 45% of the width */
-  aspect-ratio: 4 / 3; /* Standard aspect ratio */
-  background-size: cover;
-  background-position: center;
-  overflow: hidden;
-  border-radius: 4px; /* Subtle rounding */
+    flex: 0 0 45%;
+    aspect-ratio: 4 / 3;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    border-radius: 4px;
 }
 
 .item-text {
-  flex: 1 1 55%; /* Text takes up remaining space */
+    flex: 1 1 55%;
 }
 
 .item-text h3 {
-  font-family: 'Pragati Narrow', sans-serif;
-  font-size: clamp(1.6rem, 3.5vw, 2.2rem); /* Adjusted responsive font size */
-  font-weight: 700;
-  color: var(--color-heading);
-  margin-bottom: 1rem;
-  line-height: 1.25;
+    font-family: 'Pragati Narrow', sans-serif;
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    font-weight: 700;
+    color: var(--color-heading);
+    margin-bottom: 1rem;
+    line-height: 1.25;
 }
 
 .item-text p {
-  font-family: 'FreightTextPro', serif;
-  font-size: 1rem; /* Standard body text size */
-  line-height: 1.7; /* Increased line height for readability */
-  color: var(--color-text-main);
-  margin-bottom: 1rem; /* Adjusted margin since link is removed */
+    font-family: 'FreightTextPro', serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-text-main);
+    margin-bottom: 1rem;
 }
 
-/* Styles for '.read-more' removed */
-
-
-/* Responsive adjustments for Image & Text Sections */
 @media screen and (max-width: 768px) {
-  .content-section {
-    padding: 8vh 20px 10vh 20px; /* Adjust padding for smaller screens */
-  }
-
-  .image-text-item,
-  .image-text-item:nth-child(even) { /* Apply to all items on mobile */
-    flex-direction: column; /* Stack image and text vertically */
-    gap: 30px; /* Adjust gap for vertical layout */
-    align-items: flex-start; /* Align items to the start */
-    margin-bottom: 8vh; /* Adjust vertical spacing */
-  }
-
-  .item-image {
-    flex-basis: auto; /* Reset flex-basis */
-    width: 100%;
-    aspect-ratio: 16 / 10; /* Wider aspect ratio might look better full width */
-  }
-
-  .item-text {
-    flex-basis: auto; /* Reset flex-basis */
-    width: 100%;
-  }
-
-   .item-text h3 {
-     font-size: clamp(1.4rem, 5vw, 1.8rem); /* Adjust heading size */
-   }
-    .item-text p {
-        font-size: 0.95rem; /* Slightly smaller text on mobile */
-        margin-bottom: 0.5rem; /* Reduce bottom margin on mobile */
+    .content-section {
+        padding: 8vh 20px 10vh 20px;
     }
-}
-
-
-/* --------------------- */
-/* --- Main Footer ----- */
-/* --------------------- */
-.main-footer {
-  width: 100%;
-  min-height: 100vh; /* Keeps the footer viewport height */
-  padding: 80px 40px 40px 40px; /* Increased top padding */
-  background-color: var(--color-footer-bg);
-  color: var(--color-footer-text);
-  flex-shrink: 0;
-  display: flex;
-  align-items: flex-end; /* Align wrapper to bottom */
-  justify-content: center;
-  box-sizing: border-box;
-  position: relative;
-  overflow: hidden;
-}
-
-.footer-content-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 40px 30px; /* Row and column gap */
-  width: 100%;
-  max-width: 1200px;
-}
-
-.footer-column {
-  flex: 1 1 200px; /* Allow shrinking, base width 200px */
-  margin-bottom: 30px;
-}
-
-.footer-column h4 {
-  font-family: 'Pragati Narrow', sans-serif;
-  font-weight: 700;
-  font-size: 18px;
-  text-transform: uppercase;
-  margin-bottom: 20px; /* Increased space */
-  color: var(--color-footer-text);
-  position: relative;
-  padding-bottom: 5px;
-}
-/* Optional underline for footer headings */
-/*
-.footer-column h4::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 30px;
-    height: 2px;
-    background-color: var(--color-primary);
-}
-*/
-
-.footer-column p {
-  font-family: 'FreightTextPro', serif;
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 1.6;
-  margin-bottom: 15px;
-  color: var(--color-footer-text-light);
-}
-
-/* Newsletter Form */
-.newsletter-form { display: flex; gap: 8px; /* Increased gap */ }
-.newsletter-form input[type="email"] {
-  flex-grow: 1; padding: 12px 15px; /* Increased padding */
-  border: 1px solid #444; /* Slightly lighter border */
-  background-color: #2a2a2a; /* Slightly lighter background */
-  color: var(--color-footer-text);
-  font-family: 'FreightTextPro', serif; font-size: 14px; border-radius: 3px;
-  transition: border-color 0.3s ease;
-}
-.newsletter-form input[type="email"]::placeholder { color: #888; }
-.newsletter-form input[type="email"]:focus {
-    outline: none;
-    border-color: var(--color-primary);
-}
-.newsletter-form button {
-  padding: 12px 18px; /* Increased padding */
-  background-color: var(--color-primary);
-  color: #fff; /* Ensure contrast */
-  border: none; cursor: pointer;
-  font-family: 'Pragati Narrow', sans-serif; font-weight: 700;
-  font-size: 14px; text-transform: uppercase; border-radius: 3px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-.newsletter-form button:hover { background-color: #c4160c; transform: scale(1.03); }
-.newsletter-form button:active { transform: scale(0.98); }
-
-/* Footer Navigation */
-.footer-nav ul { list-style: none; padding: 0; margin: 0; }
-.footer-nav li { margin-bottom: 10px; /* Increased space */ }
-.footer-nav a {
-  text-decoration: none; color: var(--color-footer-text-light);
-  font-family: 'FreightTextPro', serif; font-weight: 300; font-size: 14px;
-  transition: color 0.3s ease, padding-left 0.3s ease;
-  display: inline-block; /* Needed for padding transition */
-}
-.footer-nav a:hover, .footer-nav a:focus {
-  color: var(--color-primary);
-  padding-left: 5px; /* Indent on hover */
-  outline: none;
-}
-
-/* Social Icons */
-.social-icons { display: flex; gap: 18px; margin-bottom: 25px; /* Increased gap */ }
-.social-icons a {
-  text-decoration: none; color: var(--color-footer-text);
-  font-family: 'Pragati Narrow', sans-serif; font-weight: 700; font-size: 18px; /* Larger icons */
-  transition: color 0.3s ease, transform 0.3s ease;
-  display: inline-block; /* Needed for transform */
-}
-.social-icons a:hover, .social-icons a:focus {
-  color: var(--color-primary); transform: translateY(-3px) scale(1.1); /* Lift and scale effect */
-  outline: none;
-}
-
-/* Collaborators Link */
-.collaborators-link h4 { margin-bottom: 10px; /* Reduced margin */ } /* Adjust if needed */
-.collaborators-link a {
-  text-decoration: none; color: var(--color-footer-text-light);
-  font-family: 'FreightTextPro', serif; font-weight: 300; font-size: 14px;
-  transition: color 0.3s ease; display: inline-block;
-  border-bottom: 1px solid transparent;
-  padding-bottom: 2px; /* Space for border */
-}
-.collaborators-link a:hover, .collaborators-link a:focus {
-  color: var(--color-primary); border-bottom-color: var(--color-primary);
-  outline: none;
-}
-
-
-.footer-logo {
-  font-family: 'Pragati Narrow', sans-serif; font-weight: 700; font-size: 18px;
-  line-height: 0.9; color: var(--color-primary); text-transform: uppercase;
-  margin-bottom: 20px; /* Increased space */
-}
-.footer-info {
-    margin-top: auto; /* Pushes this column content down if space allows */
-}
-.footer-info p {
-  font-size: 12px; margin-bottom: 8px; /* Increased space */
-  color: var(--color-footer-text-muted);
-}
-
-/* Responsive adjustments for Footer */
-@media screen and (max-width: 768px) {
-  .main-footer {
-      padding: 60px 20px 30px 20px; /* Adjust padding */
-      min-height: auto; /* Let content define height */
-      align-items: flex-start; /* Align content top on mobile */
-  }
-  .footer-content-wrapper {
-      gap: 30px; /* Adjust gap */
-  }
-  .footer-column {
-      flex-basis: calc(50% - 15px); /* Two columns on medium screens */
-      min-width: 0; /* Override min-width */
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .footer-column {
-      flex-basis: 100%; /* Single column on small screens */
-  }
-  .newsletter-form {
-      flex-direction: column; /* Stack form elements */
-      align-items: stretch;
-  }
-  .newsletter-form button {
-      width: 100%; /* Full width button */
-  }
-}
-
-.trail-image {
-  position: absolute;
-  pointer-events: none;
-  z-index: 10;
-  width: 60px;   /* Adjust size as desired */
-  height: 60px;  /* Adjust size as desired */
-  object-fit: cover;
-  /* border-radius: 50%;  <-- REMOVED THIS LINE */
+    .image-text-item,
+    .image-text-item:nth-child(even) {
+        flex-direction: column;
+        gap: 30px;
+        align-items: flex-start;
+        margin-bottom: 8vh;
+    }
+    .item-image {
+        flex-basis: auto;
+        width: 100%;
+        aspect-ratio: 16 / 10;
+    }
+    .item-text {
+        flex-basis: auto;
+        width: 100%;
+    }
+    .item-text h3 {
+        font-size: clamp(1.4rem, 5vw, 1.8rem);
+    }
+    .item-text p {
+        font-size: 0.95rem;
+        margin-bottom: 0.5rem;
+    }
 }
 /* --- End of File --- */

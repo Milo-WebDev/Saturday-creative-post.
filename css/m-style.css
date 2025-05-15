@@ -1,116 +1,38 @@
-/* --- START OF FILE m-style.css --- */
+/* --- START OF FILE css/music-page.css (REVISED & FAITHFUL TO ORIGINAL m-style.css specifics) --- */
 
-/* --------------------- */
-/* --- Font Imports ---- */
-/* --------------------- */
-@font-face {
-  font-family: 'FreightTextPro';
-  src: url('../fonts/FreightTextProBook-Regular.ttf') format('truetype'); /* Adjusted path */
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'FreightTextPro';
-  src: url('../fonts/FreightTextProLight-Regular.ttf') format('truetype'); /* Adjusted path */
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Pragati Narrow';
-  src: url('../fonts/PragatiNarrow-Bold.ttf') format('truetype'); /* Adjusted path */
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
+/* Inherits from global.css (fonts, variables, basic reset, header, footer) */
 
-/* --------------------- */
-/* --- Basic Reset ----- */
-/* --------------------- */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* ------------------------------------------------------------------ */
+/* --- Styles specific to music.html from original m-style.css ---- */
+/* ------------------------------------------------------------------ */
 
-/* --------------------- */
-/* --- CSS Variables --- */
-/* --------------------- */
-:root {
-  --color-bg-main: #F7F5F0;
-  --color-text-main: #333;
-  --color-primary: #e71a0f;
-  --color-heading: #1F1F1F;
-  --color-footer-bg: #1F1F1F;
-  --color-footer-text: #F7F5F0;
-  --color-footer-text-light: #d3d1cc;
-  --color-footer-text-muted: #aaa;
-  --img-ratio: 1.5;
-  --s: 1;
-  --color-title: var(--color-heading);
-  --color-year: #555;
-}
-
-/* --------------------- */
-/* --- Body & Layout --- */
-/* --------------------- */
-html {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden; /* Prevent horizontal scrollbars globally */
-}
-
-body {
-  font-family: 'FreightTextPro', serif;
-  font-weight: 400;
-  background-color: var(--color-bg-main);
-  color: var(--color-text-main);
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  padding: 0;
-  margin: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  width: 100%;
-}
-
+/* Page container specific setup for music page */
 .page-container {
-  width: 100%;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  position: relative; /* Context for ::before */
-  /* overflow-x: hidden; /* REMOVED - applied to inner wrapper */
-  --parallax-offset-y: 0px; /* Define variable for JS parallax */
+    /* global.css already handles basic .page-container structure.
+       If music.html needs specific overrides for .page-container itself, add them here.
+       The ::before pseudo-element is what handles the background grid. */
 }
 
 /* Background Grid using ::before on page-container (OUTER) */
+/* This was a key part of your original m-style.css for music.html */
 .page-container::before {
   content: '';
   position: absolute;
-  /* YOUR REQUIRED STYLES - Keep these for now */
-  top: -22%;
-  left: 10%;
-  width: 80%;
-  height: 100%; /* <<< Let's try setting an explicit height */
-
-  transform: translateY(var(--parallax-offset-y)); /* Apply parallax */
-
-  background-image: url('../svg/long grid2.svg'); 
+  top: -22%; /* Original value */
+  left: 10%; /* Original value */
+  width: 80%; /* Original value */
+  height: 100%; /* Original value */
+  transform: translateY(var(--parallax-offset-y)); /* Applied via global.css var, ensure it's set */
+  background-image: url('../svg/long%20grid2.svg'); /* Ensure path is correct */
   background-repeat: no-repeat;
   background-position: center center;
   background-size: contain;
-
-  z-index: -1; /* <<< TEMPORARY DEBUG - Bring way to the front */
+  z-index: -1; /* Original value */
   pointer-events: none;
-
-  /* Add for dimension debugging */
-  min-height: 100px;
+  min-height: 100px; /* Original value */
 }
-/* NEW: Inner wrapper for content clipping */
+
+/* Inner Wrapper for content clipping - from original m-style.css */
 .page-content-wrapper {
   width: 100%;
   flex-grow: 1;
@@ -118,75 +40,18 @@ body {
   flex-direction: column;
   position: relative; /* Stacking context */
   z-index: 1; /* Ensure content is above page-container::before */
-  overflow: hidden; /* <<< FORCE CLIPPING HERE (X and Y) */
+  overflow: hidden; /* FORCE CLIPPING HERE (X and Y) - Original intent */
 }
 
-
-/* --------------------- */
-/* --- Header ---------- */
-/* --------------------- */
-.site-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 100; /* High z-index keeps it above everything */
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 12px 12px;
-  /* background-color: transparent; /* KEEP TRANSPARENT unless toggled by JS */
-  /* Ensure you have a .site-header-scrolled class if needed */
-  flex-shrink: 0;
-}
-
-/* Add this class via JS (like in your scroll-effects.js) if needed */
-
-.logo {
-  font-family: 'Pragati Narrow', sans-serif;
-  font-weight: 700;
-  font-size: 22px;
-  line-height: 0.8;
-  color: var(--color-primary);
-  text-transform: uppercase;
-}
-
-.main-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-}
-
-.main-nav li {
-  margin-left: 35px;
-}
-
-.main-nav a {
-  text-decoration: none;
-  color: var(--color-heading);
-  font-family: 'FreightTextPro', serif;
-  font-weight: 400;
-  font-size: 18px;
-  display: inline-block;
-  position: relative;
-}
-
-.main-nav a:hover,
-.main-nav a:focus {
-  color: var(--color-primary);
-  text-decoration: underline;
-  transform: translateY(-2px);
-  outline: none;
-}
 
 /* --------------------- */
 /* --- Intro Section --- */
+/* (Faithful to original m-style.css) */
 /* --------------------- */
 .intro-section {
   width: 100%;
-  min-height: 50vh; /* KEEP YOUR ORIGINAL VALUE */
-  padding: 100px 40px 60px 40px;
+  min-height: 50vh; /* Original value */
+  padding: 100px 40px 60px 40px; /* Original value */
   display: flex;
   align-items: flex-end;
   box-sizing: border-box;
@@ -194,36 +59,36 @@ body {
 
 .intro-content {
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 1200px; /* Original value */
+  margin: 0 auto; /* Original value */
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  gap: 40px;
+  gap: 40px; /* Original value */
 }
 
 .intro-title {
-  font-family: 'Pragati Narrow', sans-serif;
-  font-weight: 700;
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  line-height: 1.1;
-  color: var(--color-heading);
-  text-transform: uppercase;
-  margin: 0;
-  flex-basis: 60%;
-  text-align: left;
+  font-family: 'Pragati Narrow', sans-serif; /* Already in global, but good for specificity */
+  font-weight: 700; /* Already in global */
+  font-size: clamp(2.5rem, 6vw, 4.5rem); /* Original value */
+  line-height: 1.1; /* Original value */
+  color: var(--color-heading); /* From global variables */
+  text-transform: uppercase; /* Original value */
+  margin: 0; /* Original value */
+  flex-basis: 60%; /* Original value */
+  text-align: left; /* Original value */
 }
 
 .intro-title .highlight {
-  position: relative;
+  position: relative; /* Original value */
 }
 
 .intro-title .highlight::before {
-  content: url('../svg/Mark.svg'); /* !! Check path relative to CSS !! */
+  content: url('../svg/Mark.svg'); /* Ensure path is correct */
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -22%);
+  transform: translate(-50%, -22%); /* Original value */
   z-index: -1;
   width: 115%;
   height: 140%;
@@ -233,265 +98,164 @@ body {
 }
 
 .intro-details {
-  flex-basis: 35%;
-  text-align: right;
+  flex-basis: 35%; /* Original value */
+  text-align: right; /* Original value */
 }
 
 .intro-details p {
-  font-family: 'FreightTextPro', serif;
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.6;
-  color: var(--color-text-main);
-  margin: 0 0 0.5rem 0;
+  font-family: 'FreightTextPro', serif; /* Already in global */
+  font-weight: 400; /* Already in global */
+  font-size: 1rem; /* Original value */
+  line-height: 1.6; /* Original value */
+  color: var(--color-text-main); /* From global variables */
+  margin: 0 0 0.5rem 0; /* Original value */
 }
 
 .intro-details p.post-date {
-  font-size: 0.85rem;
-  color: var(--color-text-muted);
-  font-weight: 300;
-  margin-bottom: 0;
+  font-size: 0.85rem; /* Original value */
+  color: var(--color-text-muted); /* From global variables */
+  font-weight: 300; /* Original value */
+  margin-bottom: 0; /* Original value */
 }
 
-/* Responsive adjustments for Intro Section */
+/* Responsive adjustments for Intro Section - from original m-style.css */
 @media screen and (max-width: 768px) {
   .intro-section {
-    padding: 80px 20px 40px 20px;
-    min-height: 40vh; /* KEEP YOUR ORIGINAL VALUE */
-    align-items: center;
+    padding: 80px 20px 40px 20px; /* Original value */
+    min-height: 40vh; /* Original value */
+    align-items: center; /* Original value */
   }
   .intro-content {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
+    flex-direction: column; /* Original value */
+    align-items: flex-start; /* Original value */
+    gap: 20px; /* Original value */
   }
-  .intro-title { flex-basis: auto; text-align: left; }
-  .intro-details { flex-basis: auto; text-align: left; width: 100%; }
+  .intro-title { flex-basis: auto; text-align: left; } /* Original value */
+  .intro-details { flex-basis: auto; text-align: left; width: 100%; } /* Original value */
 }
 
 
 /* --------------------- */
 /* --- Animated Grid --- */
+/* (Faithful to original m-style.css) */
 /* --------------------- */
 .grid {
   width: 100%;
-  padding: 0 12px;
-  grid-template-columns: 100%;
-  grid-auto-rows: auto;
+  padding: 0 12px; /* Original value */
+  grid-template-columns: 100%; /* Original value */
+  grid-auto-rows: auto; /* Original value */
   display: grid;
-  grid-gap: 4rem;
+  grid-gap: 4rem; /* Original value */
   position: relative;
-  margin: 10vh auto 20vh;
+  margin: 10vh auto 20vh; /* Original value */
+  /* --img-ratio and --s are applied via inline styles in HTML for items */
+  /* The :root definition of --img-ratio: 1.5 in my previous example was a fallback,
+     your HTML inline styles like style="--r: 1;--c: 1;--s:4;" will take precedence for item sizing.
+     If you had specific ratios defined for items that did NOT have --s, then a general
+     .grid__item { --img-ratio: default_value_if_not_set_by_s_or_individually; } could be useful.
+     However, your original m-style.css had :root { --img-ratio: 1.5; --s: 1; }
+     And the .grid__item-img used aspect-ratio: var(--img-ratio);
+     Let's make sure to use the original values for general items if they don't have --s.
+     Actually, your original --s:1 was a default for scale.
+     The aspect-ratio: var(--img-ratio) on grid__item-img is key.
+  */
+}
+/* This was in your original :root, let's keep it accessible as a default for any grid item img
+   if it doesn't get overridden by a more specific --s or --img-ratio at item level */
+:root {
+  --img-ratio: 1.5; /* As per original m-style.css */
 }
 
+
 .grid__item {
-  position: relative;
-  margin: 0;
+  position: relative; /* Original value */
+  margin: 0; /* Original value */
+  /* The inline styles like --r, --c, --s define grid placement and span */
+  
 }
 
 .grid__item-img {
-  position: relative;
-  overflow: hidden;
-  display: grid;
-  place-items: center;
-  width: 100%;
-  height: auto;
-  aspect-ratio: var(--img-ratio);
+  position: relative; /* Original value */
+  overflow: hidden; /* Original value */
+  display: grid; /* Original value */
+  place-items: center; /* Original value */
+  width: 100%; /* Original value */
+  height: auto; /* Original value */
+  aspect-ratio: var(--img-ratio); /* Original value - uses the general :root or item-specific one */
 }
 
 .grid__item-img-inner {
-  width: 100%;
-  height: 100%;
-  background-position: 50%;
-  background-size: cover;
-  position: relative;
+  width: 100%; /* Original value */
+  height: 100%; /* Original value */
+  background-position: 50%; /* Original value */
+  background-size: cover; /* Original value */
+  position: relative; /* Original value */
 }
 
-/* Original Caption styles - REMOVED EXAMPLE BACKGROUND */
 .grid__item-caption {
-  position: absolute;
-  padding: 0.75rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem 0.5rem;
-  font-size: 1rem;
-  /* background: rgba(247, 245, 240, 0.8); /* REMOVED */
-  /* border-radius: 3px; /* REMOVED */
+  position: absolute; /* Original value */
+  padding: 0.75rem; /* Original value */
+  display: flex; /* Original value */
+  flex-wrap: wrap; /* Original value */
+  gap: 0.25rem 0.5rem; /* Original value */
+  font-size: 1rem; /* Original value */
+  /* background: rgba(247, 245, 240, 0.8); /* REMOVED in original */
+  /* border-radius: 3px; /* REMOVED in original */
 }
 
 .grid__item-caption h3 {
-  font-weight: bold;
-  font-size: inherit;
-  margin: 0;
-  color: var(--color-title);
-  display: inline;
-  margin-right: 0.5rem;
+  font-weight: bold; /* Original value */
+  font-size: inherit; /* Original value */
+  margin: 0; /* Original value */
+  color: var(--color-title); /* From global variables */
+  display: inline; /* Original value */
+  margin-right: 0.5rem; /* Original value */
 }
 
-.grid__item-caption span {
-  font-weight: bold;
-  color: var(--color-year);
-  display: inline;
-  margin-right: 0.5rem;
+.grid__item-caption span { /* This is for the year */
+  font-weight: bold; /* Original value */
+  color: var(--color-year); /* From global variables */
+  display: inline; /* Original value */
+  margin-right: 0.5rem; /* Original value */
 }
 
 .grid__item-caption p {
-  margin-top: 0.5rem;
-  width: 100%;
-  font-size: 0.9em;
-  color: #555;
-  line-height: 1.4;
-  font-weight: 400;
+  margin-top: 0.5rem; /* Original value */
+  width: 100%; /* Original value */
+  font-size: 0.9em; /* Original value */
+  color: #555; /* Original value - slightly different from --color-text-main */
+  line-height: 1.4; /* Original value */
+  font-weight: 400; /* Original value */
 }
 
 .grid__item-caption p strong {
-  color: var(--color-primary);
+  color: var(--color-primary); /* From global variables */
 }
 
 .grid__item-caption p em {
-  font-style: italic;
+  font-style: italic; /* Original value */
 }
 
+/* Responsive adjustments for Grid - from original m-style.css */
 @media screen and (min-width: 53em) {
   .grid {
-    grid-template-columns: repeat(8,1fr);
-    padding: 0 40px;
-    grid-gap: 2rem;
+    grid-template-columns: repeat(8,1fr); /* Original value */
+    padding: 0 40px; /* Original value */
+    grid-gap: 2rem; /* Original value */
   }
   .grid__item {
-      grid-column: var(--c) / span var(--s);
-      grid-row: var(--r);
+      grid-column: var(--c) / span var(--s); /* Original value */
+      grid-row: var(--r); /* Original value */
   }
   .grid__item-caption {
-      position: absolute;
-      /* background: none; /* Keep if desired */
-      padding: 0.5rem 0;
-      bottom: auto;
-      top: 100%;
-      left: 0;
-      width: auto; /* Allow content to determine width */
+      position: absolute; /* Original value */
+      /* background: none; /* Kept if desired in original */
+      padding: 0.5rem 0; /* Original value */
+      bottom: auto; /* Original value */
+      top: 100%; /* Original value */
+      left: 0; /* Original value */
+      width: auto; /* Original value - Allow content to determine width */
   }
 }
 
-/* --------------------- */
-/* --- Main Footer ----- */
-/* --------------------- */
-.main-footer {
-  width: 100%;
-  min-height: 100vh;
-  padding: 60px 40px 40px 40px;
-  background-color: var(--color-footer-bg);
-  color: var(--color-footer-text);
-  flex-shrink: 0; /* Keep this */
-  display: flex;
-  align-items: flex-end; /* Align wrapper to bottom */
-  justify-content: center;
-  box-sizing: border-box;
-  position: relative;
-  overflow: hidden;
-  /* margin-top: auto; /* Keep this if using flexbox body/wrapper */
-}
-
-.footer-content-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 40px;
-  width: 100%;
-  max-width: 1200px;
-}
-
-.footer-column {
-  flex: 1;
-  min-width: 200px;
-  margin-bottom: 30px;
-}
-
-.footer-column h4 {
-  font-family: 'Pragati Narrow', sans-serif;
-  font-weight: 700;
-  font-size: 18px;
-  text-transform: uppercase;
-  margin-bottom: 15px;
-  color: var(--color-footer-text);
-}
-
-.footer-column p {
-  font-family: 'FreightTextPro', serif;
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 1.6;
-  margin-bottom: 15px;
-  color: var(--color-footer-text-light);
-}
-
-/* Newsletter Form */
-.newsletter-form { display: flex; gap: 5px; }
-.newsletter-form input[type="email"] {
-  flex-grow: 1; padding: 10px 12px; border: 1px solid #555;
-  background-color: #333; color: var(--color-footer-text);
-  font-family: 'FreightTextPro', serif; font-size: 14px; border-radius: 3px;
-}
-.newsletter-form input[type="email"]::placeholder { color: #888; }
-.newsletter-form button {
-  padding: 10px 15px; background-color: var(--color-primary);
-  color: var(--color-footer-text); border: none; cursor: pointer;
-  font-family: 'Pragati Narrow', sans-serif; font-weight: 700;
-  font-size: 14px; text-transform: uppercase; border-radius: 3px;
-  transition: background-color 0.3s ease;
-}
-.newsletter-form button:hover { background-color: #c4160c; }
-
-/* Footer Navigation */
-.footer-nav ul { list-style: none; padding: 0; margin: 0; }
-.footer-nav li { margin-bottom: 8px; }
-.footer-nav a {
-  text-decoration: none; color: var(--color-footer-text-light);
-  font-family: 'FreightTextPro', serif; font-weight: 300; font-size: 14px;
-  transition: color 0.3s ease;
-}
-.footer-nav a:hover, .footer-nav a:focus { color: var(--color-primary); }
-
-/* Social Icons */
-.social-icons { display: flex; gap: 15px; margin-bottom: 25px; }
-.social-icons a {
-  text-decoration: none; color: var(--color-footer-text);
-  font-family: 'Pragati Narrow', sans-serif; font-weight: 700; font-size: 16px;
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-.social-icons a:hover, .social-icons a:focus {
-  color: var(--color-primary); transform: scale(1.1);
-}
-
-/* Collaborators Link */
-.collaborators-link a {
-  text-decoration: none; color: var(--color-footer-text-light);
-  font-family: 'FreightTextPro', serif; font-weight: 300; font-size: 14px;
-  transition: color 0.3s ease; display: inline-block;
-  border-bottom: 1px solid transparent;
-}
-.collaborators-link a:hover, .collaborators-link a:focus {
-  color: var(--color-primary); border-bottom-color: var(--color-primary);
-}
-
-
-.footer-logo {
-  font-family: 'Pragati Narrow', sans-serif; font-weight: 700; font-size: 18px;
-  line-height: 0.9; color: var(--color-primary); text-transform: uppercase;
-  margin-bottom: 15px;
-}
-.footer-info p {
-  font-size: 12px; margin-bottom: 5px; color: var(--color-footer-text-muted);
-}
-
-
-.trail-image {
-  position: absolute;
-  pointer-events: none;
-  z-index: 10;
-  width: 60px;   /* Adjust size as desired */
-  height: 60px;  /* Adjust size as desired */
-  object-fit: cover;
-  /* border-radius: 50%;  <-- REMOVED THIS LINE */
-}
 /* --- End of File --- */
