@@ -1,6 +1,6 @@
-// --- START OF FILE global-effects.js ---
-// Contains effects and initializations shared across multiple pages (index.html, music.html, etc.)
+// --- START OF FILE scroll-effects.js ---
 
+// --- Global Effects Section (formerly referred to as content of global-effects.js) ---
 document.addEventListener('DOMContentLoaded', () => {
     console.log('[Global Effects] DOMContentLoaded');
 
@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         duration: 1.2,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         smoothWheel: true,
-        smoothTouch: false, // Keep false for potential conflict avoidance on mobile?
+        smoothTouch: false,
         touchMultiplier: 2,
     });
 
@@ -23,13 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- GSAP ScrollTrigger Integration & Setup (GLOBAL) ---
     if (window.gsap && window.ScrollTrigger) {
-        gsap.registerPlugin(ScrollTrigger); // Register plugin FIRST
+        gsap.registerPlugin(ScrollTrigger);
 
-        // Integrate Lenis with ScrollTrigger updates (Needs to happen ONCE globally)
         lenis.on('scroll', ScrollTrigger.update);
         console.log('[Global Effects] Lenis scroll listener added for ScrollTrigger.update');
 
-        // Integrate Lenis into GSAP ticker for synchronization
         gsap.ticker.add((time) => {
             lenis.raf(time * 1000);
         });
@@ -41,149 +39,257 @@ document.addEventListener('DOMContentLoaded', () => {
         const header = document.querySelector('.site-header');
         if (header) {
             ScrollTrigger.create({
-                start: 'top -80', // When top of viewport scrolls 80px past the top of the page
-                end: 99999, // Essentially infinite end point
+                start: 'top -80',
+                end: 99999,
                 toggleClass: { className: 'site-header-scrolled', targets: header }
-                // markers: true // Optional: for debugging scroll trigger points
             });
             console.log('[Global Effects] Header background toggle ScrollTrigger created.');
         } else {
             console.warn('[Global Effects] .site-header not found for background toggle.');
         }
 
-        // --- Footer Logo Animation (GLOBAL) ---
-        const siteLogo = document.querySelector('.site-header .logo');
-        const mainFooter = document.querySelector('.main-footer');
+        // --- Footer Logo Animation (GLOBAL - Site Header Logo to Main Footer) ---
+        const siteHeaderLogo = document.querySelector('.site-header .logo');
+        const mainFooterTrigger = document.querySelector('.main-footer');
 
-        if (siteLogo && mainFooter) {
-            // Set transform origin for scaling animation
-            gsap.set(siteLogo, { transformOrigin: "top left" });
-
-            // Define final position (adjust if needed, 50%/50% is viewport center usually)
-            const finalLogoX = "50%";
-            const finalLogoY = "50%";
+        if (siteHeaderLogo && mainFooterTrigger) {
+            gsap.set(siteHeaderLogo, { transformOrigin: "top left" });
 
             ScrollTrigger.create({
-                trigger: mainFooter,
-                start: "top center", // When the top of the footer hits the center of the viewport
-                end: "center center", // When the center of the footer hits the center of the viewport
-                scrub: 1, // Smooth scrubbing effect (1 second delay)
-                // markers: true, // Optional: for debugging
-                animation: gsap.to(siteLogo, {
-                    // Move the element relative to its normal position first
-                    left: finalLogoX,
-                    top: finalLogoY,
-                    // Then adjust position using translate (0,0 means center based on top-left origin)
-                    xPercent: 0, // Keep original xPercent correction
-                    yPercent: 0, // Keep original yPercent correction
-                    scale: 5,    // Scale it up
-                    ease: "none", // Linear transition during scrub
-                    duration: 1   // Duration influences the scrub smoothing
+                trigger: mainFooterTrigger,
+                start: "top center",
+                end: "center center",
+                scrub: 1,
+                animation: gsap.to(siteHeaderLogo, {
+                    left: "50%",
+                    top: "50%",
+                    xPercent: 0, // To center the scaled logo
+                    yPercent: 0, // To center the scaled logo
+                    scale: 5,
+                    ease: "none",
+                    duration: 1
                 }),
             });
-            console.log('[Global Effects] Footer logo animation ScrollTrigger created.');
+            console.log('[Global Effects] Site header logo to footer animation ScrollTrigger created.');
         } else {
-             if (!siteLogo) console.warn('[Global Effects] .site-header .logo not found for footer animation.');
-             if (!mainFooter) console.warn('[Global Effects] .main-footer not found for footer animation trigger.');
+             if (!siteHeaderLogo) console.warn('[Global Effects] .site-header .logo not found for footer animation.');
+             if (!mainFooterTrigger) console.warn('[Global Effects] .main-footer not found for site header logo animation trigger.');
         }
 
     } else {
         console.warn('[Global Effects] GSAP or ScrollTrigger not found. Global scroll effects disabled.');
-        // Stop Lenis if GSAP/ScrollTrigger isn't there? Or let it run for basic smooth scroll?
-        // lenis.destroy(); // Optionally destroy lenis if GSAP is essential
     }
+});
+// --- End of Global Effects Section ---
 
-}); // End MAIN DOMContentLoaded listener
-// --- END OF FILE global-effects.js ---
 
+// --- Index Page Specific Effects Section ---
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('[Index Effects] DOMContentLoaded for Footer Image Trail');
+    console.log('[Index Effects] DOMContentLoaded for Index Page Specific Effects');
 
     const footerElement = document.querySelector('.main-footer');
-    if (!footerElement) {
-        console.warn('[Index Effects] Footer element .main-footer not found for image trail.');
-        return;
+    const footerContentWrapper = footerElement ? footerElement.querySelector('.footer-content-wrapper') : null;
+
+    if (!window.gsap || !window.ScrollTrigger) {
+        console.warn('[Index Effects] GSAP or ScrollTrigger not found. Index page scroll effects (trail, text anim) disabled.');
+        return; // GSAP is essential for both effects
     }
 
-    // --- Configuration for Footer Image Trail ---
-    const trailImageSources = [
-        'imagenes/hero/footer/img (1).png',
-        'imagenes/hero/footer/img (2).png',
-        'imagenes/hero/footer/img (3).png',
-        'imagenes/hero/footer/img (4).png',
-        'imagenes/hero/footer/img (5).png',
-        // Add more image paths as needed
-    ];
+    // --- Footer Image Trail (INDEX SPECIFIC) ---
+    if (footerElement && footerContentWrapper) {
+        const trailImageSources = [
+            'imagenes/hero/footer/img (1).png',
+            'imagenes/hero/footer/img (2).png',
+            'imagenes/hero/footer/img (3).png',
+            'imagenes/hero/footer/img (4).png',
+            'imagenes/hero/footer/img (5).png',
+        ];
 
-    if (trailImageSources.length === 0) {
-        console.warn('[Index Effects] No images configured for footer trail.');
-        return;
-    }
+        if (trailImageSources.length === 0) {
+            console.warn('[Index Effects] No images configured for footer trail.');
+        } else {
+            const footerExclusionElements = [footerContentWrapper]; // Simplified to just the wrapper
 
-    let currentImageIndex = 0;
-    let lastImageX = null;
-    let lastImageY = null;
-    const MIN_DISTANCE_THRESHOLD = 100;
+            console.log('[Index Effects] Primary footer trail exclusion zone: .footer-content-wrapper');
 
-    function createTrailImage(event) {
-        const mouseX = event.offsetX;
-        const mouseY = event.offsetY;
+            let currentImageIndex = 0;
+            let lastImageAnchorX = null;
+            let lastImageAnchorY = null;
+            const MIN_DISTANCE_THRESHOLD = 70;
+            const OFFSET_DISTANCE = 110;
+            const MAX_TRAIL_IMAGES = 9;
+            let activeTrailImages = [];
 
-        if (lastImageX !== null && lastImageY !== null) {
-            const deltaX = mouseX - lastImageX;
-            const deltaY = mouseY - lastImageY;
-            const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+            function createTrailImage(event) {
+                if (footerExclusionElements.length > 0 && footerExclusionElements[0].contains(event.target)) {
+                    return;
+                }
 
-            if (distance < MIN_DISTANCE_THRESHOLD) {
-                return;
+                const currentMouseX = event.offsetX;
+                const currentMouseY = event.offsetY;
+                const prevImageAnchorX = lastImageAnchorX;
+                const prevImageAnchorY = lastImageAnchorY;
+
+                if (prevImageAnchorX !== null && prevImageAnchorY !== null) {
+                    const deltaX = currentMouseX - prevImageAnchorX;
+                    const deltaY = currentMouseY - prevImageAnchorY;
+                    const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+                    if (distance < MIN_DISTANCE_THRESHOLD) {
+                        return;
+                    }
+                }
+
+                lastImageAnchorX = currentMouseX;
+                lastImageAnchorY = currentMouseY;
+
+                if (activeTrailImages.length >= MAX_TRAIL_IMAGES) {
+                    const oldestImageEntry = activeTrailImages.shift();
+                    if (oldestImageEntry && oldestImageEntry.img.parentNode === footerElement) {
+                        if (oldestImageEntry.timeline) oldestImageEntry.timeline.kill();
+                        gsap.to(oldestImageEntry.img, {
+                            opacity: 0, scale: 0.1, duration: 0.25, ease: 'power1.in',
+                            onComplete: () => {
+                                if (oldestImageEntry.img.parentNode === footerElement) oldestImageEntry.img.remove();
+                            }
+                        });
+                    }
+                }
+
+                const img = document.createElement('img');
+                img.classList.add('trail-image'); // Make sure .trail-image CSS is defined in global.css or index-page.css
+                img.src = trailImageSources[currentImageIndex];
+                currentImageIndex = (currentImageIndex + 1) % trailImageSources.length;
+                footerElement.appendChild(img);
+
+                let initialAppearX = currentMouseX;
+                let initialAppearY = currentMouseY;
+
+                if (prevImageAnchorX !== null && prevImageAnchorY !== null) {
+                    const dX = currentMouseX - prevImageAnchorX;
+                    const dY = currentMouseY - prevImageAnchorY;
+                    const moveLength = Math.sqrt(dX * dX + dY * dY);
+                    if (moveLength > 1) {
+                        const normX = dX / moveLength; const normY = dY / moveLength;
+                        initialAppearX = currentMouseX - normX * OFFSET_DISTANCE;
+                        initialAppearY = currentMouseY - normY * OFFSET_DISTANCE;
+                    } else {
+                        initialAppearX = currentMouseX - OFFSET_DISTANCE * 0.7071; // Approx 1/sqrt(2)
+                        initialAppearY = currentMouseY - OFFSET_DISTANCE * 0.7071;
+                    }
+                } else {
+                    initialAppearX = currentMouseX - OFFSET_DISTANCE * 0.7071;
+                    initialAppearY = currentMouseY - OFFSET_DISTANCE * 0.7071;
+                }
+
+                const tl = gsap.timeline();
+                tl.set(img, {
+                    left: initialAppearX, top: initialAppearY, xPercent: -50, yPercent: -50,
+                    transformOrigin: '50% 50%', opacity: 1, scale: 1,
+                });
+                tl.to(img, {
+                    left: currentMouseX, top: currentMouseY, xPercent: -50, yPercent: -50,
+                    opacity: 1, scale: 2.0, duration: 1, ease: 'expo.out',
+                });
+                tl.to(img, {
+                    opacity: 0, scale: 0, duration: 0.6, delay: 0.2, ease: 'expo.in',
+                    onComplete: () => {
+                        if (img.parentNode === footerElement) img.remove();
+                        const indexToRemove = activeTrailImages.findIndex(entry => entry.img === img);
+                        if (indexToRemove > -1) activeTrailImages.splice(indexToRemove, 1);
+                    }
+                });
+                activeTrailImages.push({ img: img, timeline: tl });
             }
+
+            footerElement.addEventListener('mouseenter', () => {
+                console.log('[Index Effects] Mouse entered footer. Activating image trail.');
+                lastImageAnchorX = null; lastImageAnchorY = null;
+                footerElement.addEventListener('mousemove', createTrailImage);
+            });
+
+            footerElement.addEventListener('mouseleave', () => {
+                console.log('[Index Effects] Mouse left footer. Deactivating image trail.');
+                footerElement.removeEventListener('mousemove', createTrailImage);
+            });
+            console.log('[Index Effects] Footer image trail initialized.');
+        }
+    } else {
+        if (!footerElement) console.warn('[Index Effects] Footer element .main-footer not found for image trail.');
+        if (!footerContentWrapper) console.warn('[Index Effects] .footer-content-wrapper not found. Trail exclusion setup skipped.');
+    }
+    // --- End of Footer Image Trail ---
+
+
+    // --- Footer Text Animation (INDEX SPECIFIC - NEW) ---
+    if (footerElement && footerContentWrapper) { // Re-check as they are primary for this too
+        console.log('[Index Effects] Setting up Footer Text Animation.');
+
+        const elementsToAnimate = [];
+        const fCW = footerContentWrapper; // shorthand
+
+        // Column 1: Newsletter
+        elementsToAnimate.push(...Array.from(fCW.querySelectorAll('.footer-column:nth-child(1) > h4')));
+        elementsToAnimate.push(...Array.from(fCW.querySelectorAll('.footer-column:nth-child(1) > p')));
+        const formC1 = fCW.querySelector('.footer-column:nth-child(1) .newsletter-form');
+        if (formC1) {
+            const inputC1 = formC1.querySelector('input[type="email"]');
+            const buttonC1 = formC1.querySelector('button[type="submit"]');
+            if (inputC1) elementsToAnimate.push(inputC1);
+            if (buttonC1) elementsToAnimate.push(buttonC1);
         }
 
-        lastImageX = mouseX;
-        lastImageY = mouseY;
+        // Column 2: Explore
+        elementsToAnimate.push(...Array.from(fCW.querySelectorAll('.footer-column:nth-child(2) > h4')));
+        elementsToAnimate.push(...Array.from(fCW.querySelectorAll('.footer-column:nth-child(2) .footer-nav ul li')));
 
-        const img = document.createElement('img');
-        img.classList.add('trail-image');
-        img.src = trailImageSources[currentImageIndex];
-        currentImageIndex = (currentImageIndex + 1) % trailImageSources.length;
+        // Column 3: Connect & Collaborators
+        elementsToAnimate.push(...Array.from(fCW.querySelectorAll('.footer-column:nth-child(3) > h4'))); // "Conecta"
+        elementsToAnimate.push(...Array.from(fCW.querySelectorAll('.footer-column:nth-child(3) .social-icons a')));
+        const collabH4C3 = fCW.querySelector('.footer-column:nth-child(3) .collaborators-link > h4');
+        if (collabH4C3) elementsToAnimate.push(collabH4C3); // "Colaboradores"
+        const collabAC3 = fCW.querySelector('.footer-column:nth-child(3) .collaborators-link > a');
+        if (collabAC3) elementsToAnimate.push(collabAC3);
 
-        footerElement.appendChild(img);
+        // Column 4: Info
+        const logoC4 = fCW.querySelector('.footer-column:nth-child(4) .footer-logo');
+        if (logoC4) elementsToAnimate.push(logoC4);
+        elementsToAnimate.push(...Array.from(fCW.querySelectorAll('.footer-column:nth-child(4) > p')));
 
-        // Set initial properties: immediate appearance
-        gsap.set(img, {
-            left: mouseX,
-            top: mouseY,
-            xPercent: -50,
-            yPercent: -50,
-            opacity: 1,
-            scale: 2
-            // rotation: 0 // No initial rotation needed if not animating it
-        });
+        const finalAnimatedElements = elementsToAnimate.filter(el => el); // Filter out any nulls
 
-        // Animate disappearance after a delay
-        gsap.to(img, {
-            opacity: 0,
-            scale: 0.3, // Still scale down on fade, looks nice
-            // rotation: 0, // <-- REMOVED/COMMENTED OUT rotation animation
-            duration: 0.7,
-            delay: 0.3,
-            ease: 'power2.in',
-            onComplete: () => {
-                img.remove();
-            }
-        });
+        if (finalAnimatedElements.length > 0) {
+             // Set initial state for all elements before ScrollTrigger
+            gsap.set(finalAnimatedElements, { opacity: 0, y: 30 });
+
+            ScrollTrigger.create({
+                trigger: footerElement,
+                start: "top 65%",
+                // markers: true, // Uncomment for debugging
+                once: true,
+                onEnter: () => {
+                    gsap.to(finalAnimatedElements, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.6,
+                        ease: 'power2.out',
+                        stagger: 0.07,
+                        overwrite: 'auto'
+                    });
+                }
+            });
+            console.log(`[Index Effects] Footer text animation ScrollTrigger created for ${finalAnimatedElements.length} elements.`);
+        } else {
+            console.warn('[Index Effects] No elements found or collected for footer text animation.');
+        }
+    } else {
+        // Warnings for missing footerElement or footerContentWrapper for text animation handled by initial check.
+        if (!footerContentWrapper && footerElement) console.warn('[Index Effects] .footer-content-wrapper not found. Footer text animation skipped.');
+        else if (!footerElement) console.warn('[Index Effects] .main-footer not found. Footer text animation skipped.');
+
     }
-
-    footerElement.addEventListener('mouseenter', () => {
-        console.log('[Index Effects] Mouse entered footer. Activating image trail.');
-        lastImageX = null;
-        lastImageY = null;
-        footerElement.addEventListener('mousemove', createTrailImage);
-    });
-
-    footerElement.addEventListener('mouseleave', () => {
-        console.log('[Index Effects] Mouse left footer. Deactivating image trail.');
-        footerElement.removeEventListener('mousemove', createTrailImage);
-    });
+    // --- End Footer Text Animation ---
 
 });
+// --- End of Index Page Specific Effects Section ---
+
+// --- END OF FILE scroll-effects.js ---

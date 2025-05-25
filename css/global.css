@@ -324,3 +324,85 @@ body {
         width: 100%;
     }
 }
+
+/* css/transitions.css or add to css/global.css */
+
+/* --- SCROLL LOCK --- */
+/* Add this new rule to disable scrolling */
+
+
+
+
+html.scroll-locked,
+body.scroll-locked {
+    overflow: hidden !important; /* Important to override other potential overflows */
+    /* For some touch devices, especially iOS, you might need more aggressive locking.
+       If issues persist, consider also setting height: 100% on html/body when locked.
+       However, `overflow: hidden` on <html> is usually quite effective.
+    */
+}
+
+
+/* --- TRANSITION OVERLAY --- */
+#page-transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--color-primary);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+#page-transition-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#page-transition-overlay .transition-logo-container {
+    /* --- Match styles from .site-header .logo --- */
+    font-family: 'Pragati Narrow', sans-serif;
+    font-weight: 700;
+    /* You can make this font-size larger for the loading screen,
+       but line-height and alignment will match the header logo */
+    font-size: 48px; /* Example: Larger than header's 22px. Adjust as you like. */
+    line-height: 0.8; /* Crucial for matching line spacing */
+    color: var(--color-bg-main);
+    text-transform: uppercase;
+    text-align: left; /* Aligns lines of text to the left within this container */
+                      /* The container itself is centered by #page-transition-overlay */
+
+    opacity: 1;
+    /* Optional: a subtle pulse or animation for the logo */
+    /* animation: pulseLogo 2.5s infinite ease-in-out; */
+}
+
+/* Optional: pulsing animation for the logo (if you had one)
+@keyframes pulseLogo {
+    0%, 100% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.03); opacity: 1; }
+}
+*/
+
+/* --- PAGE CONTENT VISIBILITY --- */
+body.is-loading .page-container {
+    opacity: 0;
+    pointer-events: none;
+}
+
+body.is-loaded .page-container {
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.5s ease-in-out 0.1s;
+}
+
+.page-container {
+     transition: opacity 0.5s ease-in-out;
+}
+

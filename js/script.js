@@ -1,7 +1,6 @@
 // --- START OF FILE script.js ---
 
 document.addEventListener('DOMContentLoaded', () => {
-
     const triggerWords = document.querySelectorAll('.main-text .trigger-word');
     const h1Element = document.querySelector('.main-text h1');
     const imageContainer = document.getElementById('hover-image-container');
@@ -32,85 +31,117 @@ document.addEventListener('DOMContentLoaded', () => {
         ]
     };
 
-    const imageLoopInterval = 500; // Time in milliseconds between image changes
-    const hideDelay = 0; // **NEW**: Delay in ms before hiding on mouseleave (adjust as needed)
+    const imageLoopInterval = 500;
+    const hideDelay = 0;
     // ---------------------
 
-    // --- Image Preloading Function ---
-    function preloadImages(categories) {
-        console.log("Preloading hover images...");
-        let preloadedCount = 0;
-        let totalImages = 0;
+    // --- State Variables ---
+    let currentIntervalId = null;
+    let currentImageIndex = 0;
+    let hideTimeoutId = null;
+    let currentVisibleImageElement = null; // To keep track of the currently shown <img>
+    let imagesForCurrentCategory = []; // Cache image elements for the active category
+    // ---------------------
+
+    // --- Create Image Elements Function ---
+    function createHoverImageElements(categories, container) {
+        console.log("Creating hover image elements...");
+        let createdCount = 0;
+        let totalToCreate = 0;
+
         for (const category in categories) {
             if (Object.hasOwnProperty.call(categories, category)) {
                 const images = categories[category];
-                totalImages += images.length;
+                totalToCreate += images.length;
                 images.forEach(imageUrl => {
-                    const img = new Image();
+                    const img = document.createElement('img');
                     img.src = imageUrl;
-                    img.onload = () => { preloadedCount++; if (preloadedCount === totalImages) console.log("All hover images preloading initiated."); };
-                    img.onerror = () => { console.error(`Failed to preload: ${imageUrl}`); preloadedCount++; if (preloadedCount === totalImages) console.log("All hover images preloading initiated (with some errors)."); }
+                    img.alt = `Hover image for ${category}`; // Alt text for accessibility
+                    img.classList.add('hover-effect-image');
+                    img.dataset.category = category; // Store category for easy selection
+                    // Styles are now primarily handled by CSS, but initial state can be here
+                    // img.style.opacity = '0';
+                    // img.style.visibility = 'hidden';
+                    container.appendChild(img);
+                    img.onload = () => { createdCount++; if (createdCount === totalToCreate) console.log("All hover image elements created and loaded (or initiated loading)."); };
+                    img.onerror = () => { console.error(`Failed to load: ${imageUrl}`); createdCount++; if (createdCount === totalToCreate) console.log("All hover image elements created (with some loading errors)."); }
                 });
             }
         }
-         if (totalImages === 0) console.log("No images found to preload.");
+        if (totalToCreate === 0) console.log("No images found to create elements for.");
     }
-    preloadImages(categoryImages);
+    // --- Call Image Element Creation ---
+    if (imageContainer) {
+        createHoverImageElements(categoryImages, imageContainer);
+    } else {
+        console.error("#hover-image-container not found!");
+    }
     // ---------------------------------
 
-    let currentIntervalId = null;
-    let currentImageIndex = 0;
-    let hideTimeoutId = null; // **NEW**: To store the timeout ID for hiding
 
     // Function to start the image loop
     function startImageLoop(category) {
-        // **NEW**: Clear any pending hide operations
         if (hideTimeoutId) {
             clearTimeout(hideTimeoutId);
             hideTimeoutId = null;
         }
 
-        const images = categoryImages[category];
-        if (!images || images.length === 0) {
+        imagesForCurrentCategory = Array.from(imageContainer.querySelectorAll(`.hover-effect-image[data-category="${category}"]`));
+
+        if (!imagesForCurrentCategory || imagesForCurrentCategory.length === 0) {
             console.warn(`No images found for category: ${category}`);
-            imageContainer.style.backgroundImage = '';
-            imageContainer.classList.add('is-visible');
+            imageContainer.classList.remove('is-visible'); // Hide container if no images
             return;
         }
+        
+        imageContainer.classList.add('is-visible'); // Make the main container visible
 
         if (currentIntervalId) {
             clearInterval(currentIntervalId);
         }
+        if (currentVisibleImageElement) {
+            currentVisibleImageElement.classList.remove('active-img');
+        }
 
-        // *** Optimization: Only reset index if container wasn't already visible? Or always reset for consistency?
-        // Let's keep the reset for now, as the main issue is the hide/show flicker.
         currentImageIndex = 0;
-
-        imageContainer.style.backgroundImage = `url('${images[currentImageIndex]}')`;
-        imageContainer.classList.add('is-visible'); // Ensure it's visible
+        currentVisibleImageElement = imagesForCurrentCategory[currentImageIndex];
+        currentVisibleImageElement.classList.add('active-img');
 
         currentIntervalId = setInterval(() => {
-            currentImageIndex = (currentImageIndex + 1) % images.length;
-            imageContainer.style.backgroundImage = `url('${images[currentImageIndex]}')`;
+            if (currentVisibleImageElement) {
+                currentVisibleImageElement.classList.remove('active-img');
+            }
+            currentImageIndex = (currentImageIndex + 1) % imagesForCurrentCategory.length;
+            currentVisibleImageElement = imagesForCurrentCategory[currentImageIndex];
+            if (currentVisibleImageElement) {
+                currentVisibleImageElement.classList.add('active-img');
+            } else {
+                // Should not happen if imagesForCurrentCategory is populated
+                console.error("Error: currentVisibleImageElement became null during interval.");
+                clearInterval(currentIntervalId);
+            }
         }, imageLoopInterval);
     }
 
-    // Function to stop the image loop and hide container (remains mostly the same)
+    // Function to stop the image loop and hide container
     function stopImageLoop() {
         if (currentIntervalId) {
             clearInterval(currentIntervalId);
             currentIntervalId = null;
         }
+        if (currentVisibleImageElement) {
+            currentVisibleImageElement.classList.remove('active-img');
+            currentVisibleImageElement = null;
+        }
         imageContainer.classList.remove('is-visible');
+        imagesForCurrentCategory = []; // Clear the cached list
     }
-
 
     // Add event listeners to each trigger word
     triggerWords.forEach(span => {
         span.addEventListener('mouseenter', () => {
             const category = span.dataset.category;
 
-            // **NEW**: Clear any pending hide timeout when mouse enters
             if (hideTimeoutId) {
                 clearTimeout(hideTimeoutId);
                 hideTimeoutId = null;
@@ -118,24 +149,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
             h1Element.classList.add('h1-hover-active');
             span.classList.add('is-active');
-            startImageLoop(category); // Call startImageLoop directly
+            startImageLoop(category);
         });
 
         span.addEventListener('mouseleave', () => {
-            // **NEW**: Instead of calling stopImageLoop directly, schedule it
-            // Clear any previously scheduled hide (shouldn't be necessary but safe)
             if (hideTimeoutId) {
                  clearTimeout(hideTimeoutId);
             }
 
-            // Remove text styling immediately
             span.classList.remove('is-active');
             h1Element.classList.remove('h1-hover-active');
 
-            // Schedule the hiding
             hideTimeoutId = setTimeout(() => {
                 stopImageLoop();
-                hideTimeoutId = null; // Clear the ID after execution
+                hideTimeoutId = null;
             }, hideDelay);
         });
     });

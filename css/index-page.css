@@ -70,6 +70,26 @@
     visibility: visible;
 }
 
+/* NEW: Styles for the individual image elements */
+.hover-effect-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Was background-size: contain. Use 'cover' if you want to fill */
+    opacity: 0;
+    visibility: hidden; /* Start completely hidden and out of render tree */
+    /* Add a slight transition for cross-fading between images if desired */
+    /* transition: opacity 0.2s ease-in-out, visibility 0s linear 0.2s; /* More precise control */
+}
+
+.hover-effect-image.active-img {
+    opacity: 1;
+    visibility: visible;
+    /* transition: opacity 0.2s ease-in-out, visibility 0s linear 0s; */
+}
+
 .main-text { /* Hero text block */
     max-width: 85%; /* Relative to parent .content-wrapper */
     text-align: justify;

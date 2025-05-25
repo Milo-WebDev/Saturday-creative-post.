@@ -22,9 +22,9 @@
         </div>
         <nav class="main-nav">
             <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="#content-section">Artículos</a></li> <!-- Updated link -->
-                <li><a href="#main-footer">Contacto</a></li>
+                <li><a href="index.html" data-cursor-message="A casita">Inicio</a></li>
+                <li><a href="#content-section" data-cursor-message="Ver más diseños">Artículos</a></li> <!-- Updated link -->
+                <li><a href="#main-footer" data-cursor-message="¿Preguntas? ¿Sugerencias?">Contacto</a></li>
             </ul>
         </nav>
     </header>
@@ -35,7 +35,7 @@
             <h1 class="intro-title">
                 WORKSHOP:<br> <!-- Changed Title -->
                 Donde la Ebanistería<br>
-                Encuentra el <span class="highlight">Código</span>. <!-- Changed Highlight -->
+                Encuentra el <span class="highlight" data-cursor-message="¡Innovador!">Código</span>. <!-- Changed Highlight -->
             </h1>
             <div class="intro-details">
                 <p>
@@ -54,7 +54,7 @@
     <section class="content-section" id="content-section">
 
         <!-- Item 1: Image Left (workshop.jpg) -->
-        <div class="image-text-item">
+        <div class="image-text-item" data-cursor-message="Hecho a mano, pensado en digital">
             <div class="item-image" style="background-image: url('imagenes/section 2/workshop.jpg');" role="img" aria-label="Manos trabajando con muestras de materiales y planos">
             </div>
             <div class="item-text">
@@ -64,7 +64,7 @@
         </div>
 
         <!-- Item 2: Image Right (workshop (1).jpg) -->
-        <div class="image-text-item">
+        <div class="image-text-item" data-cursor-message="Web con estilo">
              <div class="item-image" style="background-image: url('imagenes/section 2/workshop (1).jpg');" role="img" aria-label="Mockups de sitio web móvil de Workshop mostrando muebles y patrones ASCII"></div>
              <div class="item-text">
                 <h3>Interfaz Tangible: Del Boceto Digital al Espacio Real</h3>
@@ -73,7 +73,7 @@
         </div>
 
         <!-- Item 3: Image Left (workshop (2).jpg) -->
-        <div class="image-text-item">
+        <div class="image-text-item" data-cursor-message="Detalles que cuentan">
              <div class="item-image" style="background-image: url('imagenes/section 2/workshop (2).jpg');" role="img" aria-label="Primer plano de una unión de esquina de madera minimalista con el logo Workshop"></div>
              <div class="item-text">
                 <h3>Carácter en la Esencia: Madera y Código Tácito</h3>
@@ -82,7 +82,7 @@
         </div>
 
         <!-- Item 4: Image Right (workshop (3).jpg - 404 wall) -->
-        <div class="image-text-item">
+        <div class="image-text-item" data-cursor-message="Error con arte">
              <div class="item-image" style="background-image: url('imagenes/section 2/workshop (3).jpg');" role="img" aria-label="Pared oscura con '404' creado con patrones de puntos estilo ASCII iluminados"></div>
              <div class="item-text">
                 <h3>Entornos Codificados: ASCII Más Allá del Mueble</h3>
@@ -91,9 +91,8 @@
         </div>
 
         <!-- Optional Item 5: Image Left (workshop (4).jpg - document) -->
-        <!-- Uncomment if you want to add a fifth item -->
-        <!--
-        <div class="image-text-item">
+        <!-- Uncomment if you want to add a fifth item
+        <div class="image-text-item" data-cursor-message="Marca en cada detalle">
              <div class="item-image" style="background-image: url('imagenes/section 2/workshop (4).jpg');" role="img" aria-label="Documento de Workshop con patrones gráficos sobre una alfombra texturizada"></div>
              <div class="item-text">
                 <h3>La Marca Hecha Textura</h3>
@@ -117,8 +116,8 @@
                 <h4>Suscríbete</h4>
                 <p>Recibe las últimas crisis creativas directo en tu bandeja.</p>
                 <form class="newsletter-form">
-                    <input type="email" placeholder="tu@email.com" required aria-label="Email for newsletter">
-                    <button type="submit">Enviar</button>
+                    <input type="email" placeholder="tu@email.com" required aria-label="Email for newsletter" data-cursor-message="Aquí tu valioso email...">
+                    <button type="submit" data-cursor-message="¡Vende tu alma!">Enviar</button>
                 </form>
             </div>
 
@@ -127,11 +126,11 @@
                 <h4>Explorar</h4>
                 <nav class="footer-nav">
                     <ul>
-                        <li><a href="#">Inicio</a></li>
-                        <li><a href="#">Artículos Recientes</a></li>
-                        <li><a href="#">Archivo</a></li>
-                        <li><a href="#">Sobre Nosotros</a></li>
-                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="index.html" data-cursor-message="Otra vez por aquí...">Inicio</a></li>
+                        <li><a href="#" data-cursor-message="Lo más fresco (o eso dicen)">Artículos Recientes</a></li>
+                        <li><a href="#" data-cursor-message="El baúl de los recuerdos">Archivo</a></li>
+                        <li><a href="#" data-cursor-message="¿Quiénes somos? ¡Misterio!">Sobre Nosotros</a></li>
+                        <li><a href="#" data-cursor-message="La letra pequeña y aburrida">Política de Privacidad</a></li>
                     </ul>
                 </nav>
             </div>
@@ -140,14 +139,14 @@
             <div class="footer-column">
                 <h4>Conecta</h4>
                 <div class="social-icons">
-                    <a href="#" aria-label="Instagram">IG</a>
-                    <a href="#" aria-label="Twitter">TW</a>
-                    <a href="#" aria-label="Behance">BE</a>
-                    <a href="#" aria-label="LinkedIn">LI</a>
+                    <a href="#" aria-label="Instagram" data-cursor-message="Fotos bonitas y postureo">IG</a>
+                    <a href="#" aria-label="Twitter" data-cursor-message="Opiniones no solicitadas">TW</a>
+                    <a href="#" aria-label="Behance" data-cursor-message="Proyectos (casi) terminados">BE</a>
+                    <a href="#" aria-label="LinkedIn" data-cursor-message="Profesionalmente creativos">LI</a>
                 </div>
                 <div class="collaborators-link">
                     <h4>Colaboradores</h4>
-                    <a href="https://example.com/team" target="_blank" rel="noopener noreferrer">Conoce al equipo</a>
+                    <a href="https://example.com/team" target="_blank" rel="noopener noreferrer" data-cursor-message="Los culpables de todo esto">Conoce al equipo</a>
                 </div>
             </div>
 
@@ -168,20 +167,24 @@
     
 </div> <!-- End of page-container -->
 
+      <div id="page-transition-overlay">
+        <div class="transition-logo-container">
+            SATURDAY<br>
+            CREATIVE<br>
+            POST.
+        </div>
+    </div>
 
     <!-- Scripts -->
-    <!-- GSAP Core & ScrollTrigger Plugin -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <!-- Lenis Smooth Scroll -->
     <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-    <!-- Your Custom Scripts -->
-    <!-- <script src="js/script.js" defer></script> --> <!-- If needed for hover image -->
-    <script src="js/scroll-effects.js" defer></script> <!-- For GSAP/Lenis/Parallax -->
-    <script src="js/image-text-animation.js" defer></script> <!-- For GSAP/Lenis/Parallax -->
-    <!-- At the end of your body in index.html and design.html -->
+    
+    <script src="js/scroll-effects.js" defer></script>
+    <script src="js/image-text-animation.js" defer></script>
+    <script src="https://unpkg.com/swup@4"></script>
     <script src="js/transitions.js" defer></script>
-    <!-- Script to update copyright year -->
+    <script src="js/cursor.js" defer></script> <!-- Corrected filename -->
     <script>
         document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>

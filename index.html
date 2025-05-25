@@ -22,9 +22,9 @@
             </div>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#section-one">Artículos</a></li>
-                    <li><a href="#main-footer">Contacto</a></li>
+                    <li><a href="#" data-cursor-message="Volver al inicio, ¿eh?">Inicio</a></li>
+                    <li><a href="#section-one" data-cursor-message="A ver qué se cuece...">Artículos</a></li>
+                    <li><a href="#main-footer" data-cursor-message="¿Necesitas algo? O solo curioseas...">Contacto</a></li>
                 </ul>
             </nav>
         </header>
@@ -43,11 +43,11 @@
                     <!-- Main text is also INSIDE the wrapper -->
                     <div class="main-text">
                         <h1>
-                            BLOG DE <span class="trigger-word" data-category="arte">ARTE</span>,
-                            <span class="trigger-word" data-category="diseno">DISEÑO</span>,
-                            <span class="trigger-word" data-category="musica">MÚSICA</span>,
-                            <span class="trigger-word" data-category="moda">MODA</span> Y
-                            <span class="trigger-word" data-category="crisis">CRISIS CREATIVAS</span>.
+                            BLOG DE <span class="trigger-word" data-category="arte" data-cursor-message="¡Inspiración!">ARTE</span>,
+                            <span class="trigger-word" data-category="diseno" data-cursor-message="Bonito, ¿no?">DISEÑO</span>,
+                            <span class="trigger-word" data-category="musica" data-cursor-message="Sube el volumen">MÚSICA</span>,
+                            <span class="trigger-word" data-category="moda" data-cursor-message="Tendencias...">MODA</span> Y
+                            <span class="trigger-word" data-category="crisis" data-cursor-message="Todos pasamos por ahí">CRISIS CREATIVAS</span>.
                         </h1>
                         <p class="subtitle">PUBLICAMOS LOS <span class="highlight">SÁBADOS.</span> OBVIO.</p>
                     </div>
@@ -81,7 +81,7 @@
                     <div class="text-content">
                         <p>El arte de portada no es solo un cuadrito bonito: es actitud, identidad visual y muchas veces, el primer filtro entre play o skip.</p>
                         <p>Hay discos que se vuelven icónicos solo por cómo se ven, y otros que nadie recuerda porque parecían hechos en Paint,</p>
-                        <a href="music.html" class="leer-post-link">LEER POST <span class="arrow">↗</span></a>
+                        <a href="music.html" class="leer-post-link" data-cursor-message="Más dibujitos y música">LEER POST <span class="arrow">↗</span></a>
                     </div>
                 </div>
 
@@ -96,33 +96,27 @@
         <!-- Top Marquee -->
         <div class="marquee marquee-top">
             <div class="marquee-track marquee-track-top">
-                <!-- Repeat the text MANY times to ensure coverage -->
                 <span>DESIGN</span><span>DESIGN</span><span>DESIGN</span><span>DESIGN</span><span>DESIGN</span><span>DESIGN</span><span>DESIGN</span><span>DESIGN</span><span>DESIGN</span><span>DESIGN</span><span>DESIGN</span><span>DESIGN</span><span>DESIGN</span><span>DESIGN</span><span>DESIGN</span><span>DESIGN</span>
             </div>
         </div>
 
         <!-- Image Switcher -->
         <div class="image-switcher">
-            <!-- Add your images here. The first one needs the 'active' class -->
             <img src="imagenes/hero/diseño/dsgn (12).webp" alt="Inspiration Image 1" class="switch-image active">
             <img src="imagenes/hero/diseño/dsgn (10).webp" alt="Inspiration Image 2" class="switch-image">
             <img src="imagenes/hero/diseño/dsgn (11).webp" alt="Inspiration Image 3" class="switch-image">
             <img src="imagenes/hero/diseño/dsgn (9).webp" alt="Inspiration Image 4" class="switch-image">
             <img src="imagenes/hero/diseño/dsgn (8).webp" alt="Inspiration Image 5" class="switch-image">
-            <!-- Add more images as needed -->
         </div>
 
        <!-- Bottom Marquee -->
        <div class="marquee marquee-bottom">
         <div class="marquee-track marquee-track-bottom">
-            <!-- Repeat the text MANY times -->
            <span>INSPO</span><span>INSPO</span><span>INSPO</span><span>INSPO</span><span>INSPO</span><span>INSPO</span><span>INSPO</span><span>INSPO</span><span>INSPO</span><span>INSPO</span><span>INSPO</span><span>INSPO</span><span>INSPO</span><span>INSPO</span><span>INSPO</span><span>INSPO</span>
        </div>
    </div>
 
-   <!-- **** ADD THIS LINK **** -->
-   <a href="design.html" class="leer-post-link-2">LEER POST <span class="arrow">↗</span></a>
-   <!-- *********************** -->
+   <a href="design.html" class="leer-post-link-2" data-cursor-message="Diseño hasta en la sopa">LEER POST <span class="arrow">↗</span></a>
 
 </div> <!-- End section-two-content -->
 </section>
@@ -138,8 +132,8 @@
                     <h4>Suscríbete</h4>
                     <p>Recibe las últimas crisis creativas directo en tu bandeja.</p>
                     <form class="newsletter-form">
-                        <input type="email" placeholder="tu@email.com" required aria-label="Email for newsletter">
-                        <button type="submit">Enviar</button>
+                        <input type="email" placeholder="tu@email.com" required aria-label="Email for newsletter" data-cursor-message="Aquí tu valioso email...">
+                        <button type="submit" data-cursor-message="¡Vende tu alma!">Enviar</button>
                     </form>
                 </div>
 
@@ -148,11 +142,11 @@
                     <h4>Explorar</h4>
                     <nav class="footer-nav">
                         <ul>
-                            <li><a href="#">Inicio</a></li>
-                            <li><a href="#">Artículos Recientes</a></li>
-                            <li><a href="#">Archivo</a></li>
-                            <li><a href="#">Sobre Nosotros</a></li>
-                            <li><a href="#">Política de Privacidad</a></li>
+                            <li><a href="#" data-cursor-message="Otra vez por aquí...">Inicio</a></li>
+                            <li><a href="#" data-cursor-message="Lo más fresco (o eso dicen)">Artículos Recientes</a></li>
+                            <li><a href="#" data-cursor-message="El baúl de los recuerdos">Archivo</a></li>
+                            <li><a href="#" data-cursor-message="¿Quiénes somos? ¡Misterio!">Sobre Nosotros</a></li>
+                            <li><a href="#" data-cursor-message="La letra pequeña y aburrida">Política de Privacidad</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -161,16 +155,14 @@
                 <div class="footer-column">
                     <h4>Conecta</h4>
                     <div class="social-icons">
-                        <!-- Replace # with actual links. Add SVGs/Icons for better visuals -->
-                        <a href="#" aria-label="Instagram">IG</a>
-                        <a href="#" aria-label="Twitter">TW</a>
-                        <a href="#" aria-label="Behance">BE</a>
-                        <a href="#" aria-label="LinkedIn">LI</a>
+                        <a href="#" aria-label="Instagram" data-cursor-message="Fotos bonitas y postureo">IG</a>
+                        <a href="#" aria-label="Twitter" data-cursor-message="Opiniones no solicitadas">TW</a>
+                        <a href="#" aria-label="Behance" data-cursor-message="Proyectos (casi) terminados">BE</a>
+                        <a href="#" aria-label="LinkedIn" data-cursor-message="Profesionalmente creativos">LI</a>
                     </div>
                     <div class="collaborators-link">
                         <h4>Colaboradores</h4>
-                        <!-- Replace # with the actual external link -->
-                        <a href="https://example.com/team" target="_blank" rel="noopener noreferrer">Conoce al equipo</a>
+                        <a href="https://example.com/team" target="_blank" rel="noopener noreferrer" data-cursor-message="Los culpables de todo esto">Conoce al equipo</a>
                     </div>
                 </div>
 
@@ -190,21 +182,26 @@
 
     </div> <!-- End of page-container -->
 
-   <div id="page-transition-overlay"></div>
+       <div id="page-transition-overlay">
+        <div class="transition-logo-container">
+            SATURDAY<br>
+            CREATIVE<br>
+            POST.
+        </div>
+    </div>
    
     <!-- Scripts -->
-    <!-- GSAP Core & ScrollTrigger Plugin -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <!-- Lenis Smooth Scroll -->
     <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-    <!-- Your Custom Scripts -->
-    <script src="js/script.js" defer></script> <!-- For hover image logic -->
-    <script src="js/index-effects.js" defer></script> <!-- For hover image logic -->
-    <script src="js/scroll-effects.js" defer></script> <!-- For GSAP/Lenis/Parallax effects -->
-    <!-- At the end of your body in index.html and design.html -->
+    
+    <script src="js/script.js" defer></script>
+    <script src="js/index-effects.js" defer></script>
+    <script src="js/scroll-effects.js" defer></script>
+    <script src="https://unpkg.com/swup@4"></script>
     <script src="js/transitions.js" defer></script>
-    <!-- Script to update copyright year -->
+    <script src="js/cursor.js" defer></script> <!-- Make sure this is the correct path and filename -->
+
     <script>
         document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
