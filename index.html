@@ -6,6 +6,7 @@
     <title>Saturday Creative Post</title>
     <link rel="stylesheet" href="css/index-page.css">
     <link rel="stylesheet" href="css/global.css">
+     <meta name="view-transition" content="same-origin">
     <!-- Ensure fonts are correctly linked/loaded if not using @font-face -->
 </head>
 <body>
@@ -189,6 +190,8 @@
 
     </div> <!-- End of page-container -->
 
+   <div id="page-transition-overlay"></div>
+   
     <!-- Scripts -->
     <!-- GSAP Core & ScrollTrigger Plugin -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -199,7 +202,8 @@
     <script src="js/script.js" defer></script> <!-- For hover image logic -->
     <script src="js/index-effects.js" defer></script> <!-- For hover image logic -->
     <script src="js/scroll-effects.js" defer></script> <!-- For GSAP/Lenis/Parallax effects -->
-
+    <!-- At the end of your body in index.html and design.html -->
+    <script src="js/transitions.js" defer></script>
     <!-- Script to update copyright year -->
     <script>
         document.getElementById('current-year').textContent = new Date().getFullYear();
